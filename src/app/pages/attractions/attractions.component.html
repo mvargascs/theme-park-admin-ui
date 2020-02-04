@@ -1,1 +1,35 @@
-<p>attractions works!</p>
+<div fxLayout="column" fxLayoutGap="1rem">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+
+  <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+    <!-- Name Definition -->
+    <ng-container cdkColumnDef="name">
+      <mat-header-cell *cdkHeaderCellDef mat-sort-header> Name </mat-header-cell>
+      <mat-cell *cdkCellDef="let row"> {{row.name}} </mat-cell>
+    </ng-container>
+
+    <!-- Wait Time Definition -->
+    <ng-container cdkColumnDef="waittime">
+      <mat-header-cell *cdkHeaderCellDef mat-sort-header> Wait Time </mat-header-cell>
+      <mat-cell *cdkCellDef="let row"> {{row.waittime}} </mat-cell>
+    </ng-container>
+
+    <!-- Location Definition -->
+    <ng-container cdkColumnDef="location" mat-sort-header>
+      <mat-header-cell *cdkHeaderCellDef> Location </mat-header-cell>
+      <mat-cell *cdkCellDef="let row"> {{row.location}} </mat-cell>
+    </ng-container>
+
+    <!-- QuickLane Definition -->
+    <ng-container cdkColumnDef="quicklane" mat-sort-header>
+      <mat-header-cell *cdkHeaderCellDef> QuickLane </mat-header-cell>
+      <mat-cell *cdkCellDef="let row"> {{row.quicklane}} </mat-cell>
+    </ng-container>
+
+    <!-- Header and Row Declarations -->
+    <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *cdkRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+</div>
