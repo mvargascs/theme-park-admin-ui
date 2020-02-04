@@ -70,7 +70,7 @@ $mat-accent: (
 
 $primary: mat-palette($mat-primary);
 $accent: mat-palette($mat-accent);
-$theme: mat-light-theme($primary, $accent);
+$theme: mat-dark-theme($primary, $accent);
 @include angular-material-theme($theme);
 
 html,
