@@ -1,42 +1,14 @@
 <div fxLayout="row" fxLayoutGap="1rem">
-  <a fxFlex="25">
-    <mat-card>
-      <mat-card-title>
-        View Rides
-      </mat-card-title>
-      <mat-card-content>
-        View a list of rides available and their details.
-      </mat-card-content>
-    </mat-card>
-  </a>
-  <a fxFlex="25">
-    <mat-card>
-      <mat-card-title>
-        Create Ride Form
-      </mat-card-title>
-      <mat-card-content>
-        Create a ride through a validated form.
-      </mat-card-content>
-    </mat-card>
-  </a>
-  <a fxFlex="25">
-    <mat-card>
-      <mat-card-title>
-        Import Ride JSON
-      </mat-card-title>
-      <mat-card-content>
-        Create a ride from a JSON object.
-      </mat-card-content>
-    </mat-card>
-  </a>
-  <a fxFlex="25">
-    <mat-card>
-      <mat-card-title>
-        Delete a Ride
-      </mat-card-title>
-      <mat-card-content>
-        Pick a ride from a dropdown to remove from the list of rides.
-      </mat-card-content>
-    </mat-card>
-  </a>
+  <div *ngFor="let card of cards" fxFlex="25">
+    <a>
+      <mat-card>
+        <mat-card-title>
+          {{card.title}}
+        </mat-card-title>
+        <mat-card-content>
+          {{card.description}}
+        </mat-card-content>
+      </mat-card>
+    </a>
+  </div>
 </div>
