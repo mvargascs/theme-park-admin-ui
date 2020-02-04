@@ -83,3 +83,11 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   color: white;
 }
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  cursor: pointer;
+}

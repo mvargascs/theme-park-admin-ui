@@ -9,6 +9,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   { path: 'dashboard', loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule) },
+  { path: 'attractions', loadChildren: () => import('./pages/attractions/attractions.module').then(m => m.AttractionsModule) },
   {
     path: '**',
     redirectTo: '/dashboard',
