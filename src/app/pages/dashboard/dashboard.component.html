@@ -1,5 +1,5 @@
-<div fxLayout="column" fxLayoutGap="1rem">
-  <a>
+<div fxLayout="row" fxLayoutGap="1rem">
+  <a fxFlex="25">
     <mat-card>
       <mat-card-title>
         View Rides
@@ -9,7 +9,7 @@
       </mat-card-content>
     </mat-card>
   </a>
-  <a>
+  <a fxFlex="25">
     <mat-card>
       <mat-card-title>
         Create Ride Form
@@ -19,13 +19,23 @@
       </mat-card-content>
     </mat-card>
   </a>
-  <a>
+  <a fxFlex="25">
     <mat-card>
       <mat-card-title>
         Import Ride JSON
       </mat-card-title>
       <mat-card-content>
-        Create a ride with a JSON object.
+        Create a ride from a JSON object.
+      </mat-card-content>
+    </mat-card>
+  </a>
+  <a fxFlex="25">
+    <mat-card>
+      <mat-card-title>
+        Delete a Ride
+      </mat-card-title>
+      <mat-card-content>
+        Pick a ride from a dropdown to remove from the list of rides.
       </mat-card-content>
     </mat-card>
   </a>
