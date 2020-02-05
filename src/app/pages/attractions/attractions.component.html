@@ -1,35 +1,62 @@
 <div fxLayout="column" fxLayoutGap="1rem">
-  <mat-form-field>
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-  </mat-form-field>
+  <mat-card>
+    <mat-card-content>
+      <mat-form-field fxLayout="column">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+    </mat-card-content>
+  </mat-card>
 
-  <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-    <!-- Name Definition -->
-    <ng-container cdkColumnDef="name">
-      <mat-header-cell *cdkHeaderCellDef mat-sort-header> Name </mat-header-cell>
-      <mat-cell *cdkCellDef="let row"> {{row.name}} </mat-cell>
-    </ng-container>
+  <mat-card>
+    <mat-card-content>
+      <mat-table [dataSource]="dataSource" matSort>
+        <!-- Name Definition -->
+        <ng-container cdkColumnDef="name">
+          <mat-header-cell *cdkHeaderCellDef mat-sort-header> Name </mat-header-cell>
+          <mat-cell *cdkCellDef="let row"> {{row.name}} </mat-cell>
+        </ng-container>
 
-    <!-- Wait Time Definition -->
-    <ng-container cdkColumnDef="waittime">
-      <mat-header-cell *cdkHeaderCellDef mat-sort-header> Wait Time </mat-header-cell>
-      <mat-cell *cdkCellDef="let row"> {{row.waittime}} </mat-cell>
-    </ng-container>
+        <!-- Wait Time Definition -->
+        <ng-container cdkColumnDef="waittime">
+          <mat-header-cell *cdkHeaderCellDef mat-sort-header> Wait Time </mat-header-cell>
+          <mat-cell *cdkCellDef="let row">
+            <span *ngIf="row.waittime; else nullWait">{{row.waittime}}</span>
+            <ng-template #nullWait>--</ng-template>
+          </mat-cell>
+        </ng-container>
 
-    <!-- Location Definition -->
-    <ng-container cdkColumnDef="location" mat-sort-header>
-      <mat-header-cell *cdkHeaderCellDef> Location </mat-header-cell>
-      <mat-cell *cdkCellDef="let row"> {{row.location}} </mat-cell>
-    </ng-container>
+        <!-- Location Definition -->
+        <ng-container cdkColumnDef="location" mat-sort-header>
+          <mat-header-cell *cdkHeaderCellDef> Location </mat-header-cell>
+          <mat-cell *cdkCellDef="let row"> {{row.location}} </mat-cell>
+        </ng-container>
 
-    <!-- QuickLane Definition -->
-    <ng-container cdkColumnDef="quicklane" mat-sort-header>
-      <mat-header-cell *cdkHeaderCellDef> QuickLane </mat-header-cell>
-      <mat-cell *cdkCellDef="let row"> {{row.quicklane}} </mat-cell>
-    </ng-container>
+        <!-- QuickLane Definition -->
+        <ng-container cdkColumnDef="quicklane" mat-sort-header>
+          <mat-header-cell *cdkHeaderCellDef> QuickLane </mat-header-cell>
+          <mat-cell *cdkCellDef="let row">
+            <span *ngIf="row.quicklane">
+              <mat-icon>done</mat-icon>
+            </span>
+          </mat-cell>
+        </ng-container>
 
-    <!-- Header and Row Declarations -->
-    <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *cdkRowDef="let row; columns: displayedColumns"></mat-row>
-  </mat-table>
+        <!-- Status Definition -->
+        <ng-container cdkColumnDef="status" mat-sort-header>
+          <mat-header-cell *cdkHeaderCellDef> Status </mat-header-cell>
+          <mat-cell *cdkCellDef="let row">
+            <div [ngSwitch]="row.status">
+              <span *ngSwitchCase="AttractionStatus.Active" class="active">{{AttractionStatus[row.status]}}</span>
+              <span *ngSwitchCase="AttractionStatus.Inactive" class="inactive">{{AttractionStatus[row.status]}}</span>
+              <span *ngSwitchDefault class="warn">{{AttractionStatus[row.status] | spacing}}</span>
+            </div>
+          </mat-cell>
+        </ng-container>
+
+        <!-- Header and Row Declarations -->
+        <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *cdkRowDef="let row; columns: displayedColumns"></mat-row>
+      </mat-table>
+    </mat-card-content>
+  </mat-card>
 </div>

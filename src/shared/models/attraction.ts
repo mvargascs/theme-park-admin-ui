@@ -1,3 +1,5 @@
+import { AttractionStatus } from './attraction-status';
+
 export interface Attraction {
     id: string;
     name: string;
@@ -5,4 +7,5 @@ export interface Attraction {
     waittime?: number;
     location: string;
     quicklane: boolean;
+    status: AttractionStatus;
 }

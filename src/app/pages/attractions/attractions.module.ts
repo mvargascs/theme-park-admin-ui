@@ -6,10 +6,13 @@ import { MaterialModule } from '@shared/modules/material.module';
 
 import { AttractionsRoutingModule } from './attractions-routing.module';
 import { AttractionsComponent } from './attractions.component';
-
+import { SpacingPipe } from '@shared/pipes/spacing.pipe';
 
 @NgModule({
-  declarations: [AttractionsComponent],
+  declarations: [
+    AttractionsComponent,
+    SpacingPipe
+  ],
   imports: [
     CommonModule,
     AttractionsRoutingModule,

@@ -4,6 +4,7 @@ import { Observable, Subscription } from 'rxjs';
 
 import { Attraction } from '@shared/models/attraction';
 import { AttractionsService } from '@shared/services/attractions.service';
+import { AttractionStatus } from '@shared/models/attraction-status';
 
 @Component({
   selector: 'app-attractions',
@@ -12,9 +13,10 @@ import { AttractionsService } from '@shared/services/attractions.service';
 })
 export class AttractionsComponent implements OnInit, OnDestroy {
   attractions$: Observable<Attraction[]>;
-  displayedColumns: string[] = ['name', 'waittime', 'location', 'quicklane'];
+  displayedColumns: string[] = ['name', 'waittime', 'location', 'quicklane', 'status'];
   dataSource: MatTableDataSource<Attraction>;
   subs: Subscription = new Subscription();
+  AttractionStatus = AttractionStatus;
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 

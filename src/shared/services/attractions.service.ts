@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Attraction } from '@shared/models/attraction';
 import { of, Observable } from 'rxjs';
+import { AttractionStatus } from '@shared/models/attraction-status';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class AttractionsService {
       waittime: 10,
       location: 'Dream World',
       quicklane: false,
+      status: AttractionStatus.Active,
     },
     {
       id: '93cd7e38-2234-476b-a3a6-e6ca7d714246',
@@ -23,6 +25,15 @@ export class AttractionsService {
       waittime: 55,
       location: 'Abstractland',
       quicklane: true,
+      status: AttractionStatus.Inactive,
+    },
+    {
+      id: '284ea724-069c-4807-b4a4-6e9c357c03be',
+      name: 'Raging Seas',
+      description: 'Coming Soon...',
+      location: 'Islands of Mists',
+      quicklane: false,
+      status: AttractionStatus.UnderConstruction,
     },
   ]
 
