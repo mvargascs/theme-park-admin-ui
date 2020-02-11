@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import {
   MatButtonModule,
   MatCardModule,
+  MatIconModule,
   MatInputModule,
+  MatSelectModule,
+  MatSliderModule,
   MatTableModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatIconModule,
 } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
 
@@ -20,6 +22,8 @@ import { CdkTableModule } from '@angular/cdk/table';
     MatCardModule,
     MatIconModule,
     MatInputModule,
+    MatSelectModule,
+    MatSliderModule,
     MatTableModule,
     MatToolbarModule,
     MatTooltipModule,
@@ -30,6 +34,8 @@ import { CdkTableModule } from '@angular/cdk/table';
     MatCardModule,
     MatIconModule,
     MatInputModule,
+    MatSelectModule,
+    MatSliderModule,
     MatTableModule,
     MatToolbarModule,
     MatTooltipModule,
