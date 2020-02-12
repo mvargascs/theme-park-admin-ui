@@ -22,22 +22,21 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-          <mat-label>Is QuickLane available at this attraction?</mat-label>
-          <input matInput formControlName="quicklane">
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
           <mat-label>Attraction Status</mat-label>
           <mat-select formControlName="status">
-            <mat-option *ngFor="let s of attractionStatus | keyvalue" value="{{s.value}}">
-              {{s.key}}
+            <mat-option *ngFor="let s of statusOptions | keyvalue" value="{{s.key}}">
+              {{s.value | spacing}}
             </mat-option>
           </mat-select>
         </mat-form-field>
 
+        <mat-slide-toggle class="mat-form-field-wrapper" formControlName="quicklane" color="primary" [checked]="checked">
+          Is QuickLane available at this attraction?
+        </mat-slide-toggle>
+
         <div fxLayout="row" fxLayoutAlign="space-between">
-          <button mat-raised-button type="button" color="primary" routerLink="/dashboard">Cancle</button>
-          <button mat-raised-button type="submit" color="primary">Create</button>
+          <button mat-raised-button type="button" color="accent" routerLink="/dashboard">Cancle</button>
+          <button mat-raised-button type="submit" color="primary" [disabled]="attractionForm.invalid">Create</button>
         </div>
 
       </form>

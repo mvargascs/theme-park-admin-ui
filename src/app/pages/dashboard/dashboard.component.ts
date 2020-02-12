@@ -16,7 +16,8 @@ export class DashboardComponent implements OnInit {
     },
     {
       title: 'Create Attraction Form',
-      description: 'Create an attraction through a validated form.'
+      description: 'Create an attraction through a validated form.',
+      url: '/create-attraction'
     },
     {
       title: 'Import Attraction JSON',

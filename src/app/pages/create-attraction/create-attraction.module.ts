@@ -7,15 +7,19 @@ import { MaterialModule } from '@shared/modules/material.module';
 
 import { CreateAttractionRoutingModule } from './create-attraction-routing.module';
 import { CreateAttractionComponent } from './create-attraction.component';
+import { SharedModule } from '@shared/modules/shared.module';
 
 @NgModule({
-  declarations: [CreateAttractionComponent],
+  declarations: [
+    CreateAttractionComponent
+  ],
   imports: [
     CommonModule,
     CreateAttractionRoutingModule,
     MaterialModule,
     FlexLayoutModule,
     ReactiveFormsModule,
+    SharedModule,
   ]
 })
 export class CreateAttractionModule { }

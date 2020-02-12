@@ -11,7 +11,6 @@ import { AttractionStatus } from '@shared/models/attraction-status';
 })
 export class CreateAttractionComponent implements OnInit {
   attractionForm: FormGroup;
-  attractionStatus = AttractionStatus;
   statusOptions = Object.keys(AttractionStatus).filter(e => !isNaN(+e)).map(o => { return AttractionStatus[o] });
 
   constructor(
@@ -24,23 +23,38 @@ export class CreateAttractionComponent implements OnInit {
       name: ['', Validators.required],
       description: [null],
       location: ['', Validators.required],
-      quicklane: [false, Validators.required],
       status: [AttractionStatus.Inactive, Validators.required],
+      quicklane: [false, Validators.required],
     });
   }
 
   createAttraction() {
     const newAttraction: Attraction = {
-      id: '000',
+      id: null,
       name: this.attractionForm.controls.name.value,
       description: this.attractionForm.controls.description.value,
       waittime: null,
       location: this.attractionForm.controls.location.value,
+      status: this.mapAttractionStatus(),
       quicklane: this.attractionForm.controls.quicklane.value,
-      status: this.attractionForm.controls.status.value,
     }
 
     console.dir(newAttraction);
     // this.attractionsService.createAttraction(newAttraction);
+  }
+
+  mapAttractionStatus() {
+    switch(this.attractionForm.controls.status.value) {
+      case '0':
+        return AttractionStatus.Active;
+      case '1':
+        return AttractionStatus.Inactive;
+      case '2':
+        return AttractionStatus.UnderConstruction;
+      case '3':
+        return AttractionStatus.UnderRenovation;
+      default:
+        return AttractionStatus.Inactive;
+    }
   }
 }

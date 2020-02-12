@@ -6,18 +6,18 @@ import { MaterialModule } from '@shared/modules/material.module';
 
 import { AttractionsRoutingModule } from './attractions-routing.module';
 import { AttractionsComponent } from './attractions.component';
-import { SpacingPipe } from '@shared/pipes/spacing.pipe';
+import { SharedModule } from '@shared/modules/shared.module';
 
 @NgModule({
   declarations: [
-    AttractionsComponent,
-    SpacingPipe
+    AttractionsComponent
   ],
   imports: [
     CommonModule,
     AttractionsRoutingModule,
     MaterialModule,
     FlexLayoutModule,
+    SharedModule,
   ]
 })
 export class AttractionsModule { }
