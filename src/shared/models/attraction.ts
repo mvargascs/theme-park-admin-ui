@@ -1,5 +1,6 @@
 import { AttractionStatus } from './attraction-status';
 
+// TODO: this is a collection.
 export interface Attraction {
     name: string;
     location: string;

@@ -19,14 +19,14 @@ export class DashboardComponent implements OnInit {
       description: 'Create an attraction through a validated form.',
       url: '/create-attraction'
     },
-    {
-      title: 'Import Attraction JSON',
-      description: 'Create an attraction from a JSON object.'
-    },
-    {
-      title: 'Delete an Attraction',
-      description: 'Pick an attraction from a dropdown to remove from the list of rides.'
-    }
+    // {
+    //   title: 'Import Attraction JSON',
+    //   description: 'Create an attraction from a JSON object.'
+    // },
+    // {
+    //   title: 'Delete an Attraction',
+    //   description: 'Pick an attraction from a dropdown to remove from the list of rides.'
+    // }
   ]
 
   constructor() { }

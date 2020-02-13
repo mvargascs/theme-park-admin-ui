@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AttractionsService } from '@shared/services/attractions.service';
 import { Attraction } from '@shared/models/attraction';
 import { AttractionStatus } from '@shared/models/attraction-status';
+import { AttractionLocations } from '@shared/models/attraction-locations';
 
 @Component({
   selector: 'app-create-attraction',
@@ -11,6 +12,7 @@ import { AttractionStatus } from '@shared/models/attraction-status';
 })
 export class CreateAttractionComponent implements OnInit {
   attractionForm: FormGroup;
+  locations = AttractionLocations;
   statusOptions = Object.keys(AttractionStatus).filter(e => !isNaN(+e)).map(o => { return AttractionStatus[o] });
 
   constructor(

@@ -18,7 +18,11 @@
 
         <mat-form-field appearance="outline">
           <mat-label>Location</mat-label>
-          <input matInput formControlName="location">
+          <mat-select formControlName="location">
+            <mat-option *ngFor="let l of locations" value="{{l}}">
+              {{l}}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
@@ -30,7 +34,7 @@
           </mat-select>
         </mat-form-field>
 
-        <mat-slide-toggle class="mat-form-field-wrapper" formControlName="quicklane" color="primary" [checked]="checked">
+        <mat-slide-toggle class="mat-form-field-wrapper" formControlName="quicklane" color="primary">
           Is QuickLane available at this attraction?
         </mat-slide-toggle>
 
