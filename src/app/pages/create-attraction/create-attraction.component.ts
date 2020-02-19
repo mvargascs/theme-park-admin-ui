@@ -1,5 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
 import { AttractionsService } from '@shared/services/attractions.service';
 import { Attraction } from '@shared/models/attraction';
 import { AttractionStatus } from '@shared/models/attraction-status';
@@ -18,6 +20,7 @@ export class CreateAttractionComponent implements OnInit {
   constructor(
     private attractionsService: AttractionsService,
     private fb: FormBuilder,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -41,8 +44,8 @@ export class CreateAttractionComponent implements OnInit {
       quicklane: this.attractionForm.controls.quicklane.value,
     }
 
-    console.dir(newAttraction);
-    // this.attractionsService.createAttraction(newAttraction);
+    // The service will turn into creating firebase documents and will handle routing
+    this.attractionsService.createAttraction(newAttraction) ? this.router.navigate(['/', 'dashboard']): null;
   }
 
   mapAttractionStatus() {

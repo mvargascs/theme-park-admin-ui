@@ -10,13 +10,16 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
+  authError$: Observable<string>;
   user$: Observable<User>;
-  
+
   constructor(
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
     private router: Router,
   ) {
+    this.authError$ = this.setAuthError(null);
+
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
@@ -28,28 +31,56 @@ export class AuthService {
     )
   }
 
-  async emailSignIn(email: string, password: string) {
-    const credential = await this.afAuth.auth.signInWithEmailAndPassword(email, password);
+  registerUser(email: string, password: string): Promise<void> {
+    this.authError$ = this.setAuthError(null);
 
-    return this.updateUserData(credential.user);
+    return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        this.router.navigate(['/', 'login']);
+      });
   }
 
-  private updateUserData(user) {
+  emailSignIn(email: string, password: string): Promise<void> {
+    this.authError$ = this.setAuthError(null);
+
+    return this.afAuth.auth.signInWithEmailAndPassword(email, password)
+      .then((res: firebase.auth.UserCredential) => {
+        this.router.navigate(['/', 'dashboard']);
+        this.updateUserData(res.user);
+      })
+      .catch((err: firebase.auth.Error) => {
+        this.authError$ = this.setAuthError(err);
+      });
+  }
+
+  private updateUserData(user: firebase.User): Promise<void> {
     // Sets user data to firestore on login
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
 
-    const data: User = { 
-      uid: user.uid, 
-      email: user.email, 
-      displayName: user.displayName, 
+    const data: User = {
+      uid: user.uid,
+      email: user.email,
+      displayName: user.displayName,
       photoUrl: user.photoURL
-    } 
+    };
 
     return userRef.set(data, { merge: true })
   }
 
-  async signOut() {
-    await this.afAuth.auth.signOut();
-    this.router.navigate(['/']);
+  signOut(): Promise<void> {
+    this.authError$ = this.setAuthError(null);
+
+    return this.afAuth.auth.signOut().finally(() => { this.router.navigate(['/']); })
+  }
+
+  private setAuthError(err: firebase.auth.Error): Observable<string> {
+    if (err == null) {
+      return of('');
+    }
+
+    switch (err.code) {
+      case 'auth/wrong-password':
+        return of('Invalid Credentials');
+    }
   }
 }
