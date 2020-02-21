@@ -1,12 +1,9 @@
-import { AttractionStatus } from './attraction-status';
-
-// TODO: this is a collection.
 export interface Attraction {
-    name: string;
-    location: string;
-    quicklane: boolean;
-    status: AttractionStatus;
     id?: string;
+    name: string;
     description?: string;
+    location: string;
     waittime?: number;
+    status: string;
+    quicklane: boolean;
 }

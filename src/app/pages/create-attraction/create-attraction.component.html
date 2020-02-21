@@ -19,8 +19,8 @@
         <mat-form-field appearance="outline">
           <mat-label>Location</mat-label>
           <mat-select formControlName="location">
-            <mat-option *ngFor="let l of locations" value="{{l}}">
-              {{l}}
+            <mat-option *ngFor="let l of locations$ | async" value="{{l.locationName}}">
+              {{l.locationName}}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -28,8 +28,8 @@
         <mat-form-field appearance="outline">
           <mat-label>Attraction Status</mat-label>
           <mat-select formControlName="status">
-            <mat-option *ngFor="let s of statusOptions | keyvalue" value="{{s.key}}">
-              {{s.value | spacing}}
+            <mat-option *ngFor="let s of statuses$ | async" value="{{s?.status}}">
+              {{s?.status}}
             </mat-option>
           </mat-select>
         </mat-form-field>

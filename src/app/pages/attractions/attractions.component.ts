@@ -4,7 +4,6 @@ import { Observable, Subscription } from 'rxjs';
 
 import { Attraction } from '@shared/models/attraction';
 import { AttractionsService } from '@shared/services/attractions.service';
-import { AttractionStatus } from '@shared/models/attraction-status';
 
 @Component({
   selector: 'app-attractions',
@@ -12,11 +11,9 @@ import { AttractionStatus } from '@shared/models/attraction-status';
   styleUrls: ['./attractions.component.scss']
 })
 export class AttractionsComponent implements OnInit, OnDestroy {
-  attractions$: Observable<Attraction[]>;
   displayedColumns: string[] = ['name', 'waittime', 'location', 'quicklane', 'status'];
   dataSource: MatTableDataSource<Attraction>;
   subs: Subscription = new Subscription();
-  AttractionStatus = AttractionStatus;
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
@@ -27,14 +24,18 @@ export class AttractionsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.dataSource = new MatTableDataSource([])
     this.subs.add(
-      this.attractionsService.getAttractions().subscribe(res => {
-        this.dataSource = new MatTableDataSource(res);
+      this.attractionsService.getAttractions().subscribe((attractions: Attraction[]) => {
+        this.dataSource = new MatTableDataSource(attractions);
       })
     );
   }
 
   ngOnDestroy() {
     this.subs.unsubscribe();
+  }
+
+  addDefaultAttractions() {
+    this.attractionsService.addDefaultAttractions();
   }
 
   applyFilter(filterValue: string) {

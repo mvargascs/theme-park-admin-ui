@@ -46,9 +46,9 @@
           <mat-header-cell *cdkHeaderCellDef> Status </mat-header-cell>
           <mat-cell *cdkCellDef="let row">
             <div [ngSwitch]="row.status">
-              <span *ngSwitchCase="AttractionStatus.Active" class="active">{{AttractionStatus[row.status]}}</span>
-              <span *ngSwitchCase="AttractionStatus.Inactive" class="inactive">{{AttractionStatus[row.status]}}</span>
-              <span *ngSwitchDefault class="warn">{{AttractionStatus[row.status] | spacing}}</span>
+              <span *ngSwitchCase="'Active'" class="active">{{row.status}}</span>
+              <span *ngSwitchCase="'Inactive'" class="inactive">{{row.status}}</span>
+              <span *ngSwitchDefault class="warn">{{row.status}}</span>
             </div>
           </mat-cell>
         </ng-container>
@@ -58,5 +58,8 @@
         <mat-row *cdkRowDef="let row; columns: displayedColumns"></mat-row>
       </mat-table>
     </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-raised-button color="primary" (click)="addDefaultAttractions()">Add Default Attractions</button>
+    </mat-card-actions>
   </mat-card>
 </div>

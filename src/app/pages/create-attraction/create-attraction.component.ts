@@ -4,8 +4,9 @@ import { Router } from '@angular/router';
 
 import { AttractionsService } from '@shared/services/attractions.service';
 import { Attraction } from '@shared/models/attraction';
+import { Observable } from 'rxjs';
+import { AttractionLocation } from '@shared/models/attraction-location';
 import { AttractionStatus } from '@shared/models/attraction-status';
-import { AttractionLocations } from '@shared/models/attraction-locations';
 
 @Component({
   selector: 'app-create-attraction',
@@ -14,8 +15,8 @@ import { AttractionLocations } from '@shared/models/attraction-locations';
 })
 export class CreateAttractionComponent implements OnInit {
   attractionForm: FormGroup;
-  locations = AttractionLocations;
-  statusOptions = Object.keys(AttractionStatus).filter(e => !isNaN(+e)).map(o => { return AttractionStatus[o] });
+  locations$: Observable<AttractionLocation[]>;
+  statuses$: Observable<AttractionStatus[]>;
 
   constructor(
     private attractionsService: AttractionsService,
@@ -24,42 +25,30 @@ export class CreateAttractionComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.locations$ = this.attractionsService.getAttractionLocations();
+    this.statuses$ = this.attractionsService.getAttractionStatuses();
+
     this.attractionForm = this.fb.group({
       name: ['', Validators.required],
       description: [null],
       location: ['', Validators.required],
-      status: [AttractionStatus.Inactive, Validators.required],
+      status: ['Inactive', Validators.required],
       quicklane: [false, Validators.required],
     });
   }
 
   createAttraction() {
     const newAttraction: Attraction = {
-      id: null,
       name: this.attractionForm.controls.name.value,
       description: this.attractionForm.controls.description.value,
       waittime: null,
       location: this.attractionForm.controls.location.value,
-      status: this.mapAttractionStatus(),
+      status: this.attractionForm.controls.status.value,
       quicklane: this.attractionForm.controls.quicklane.value,
     }
 
     // The service will turn into creating firebase documents and will handle routing
-    this.attractionsService.createAttraction(newAttraction) ? this.router.navigate(['/', 'dashboard']): null;
-  }
-
-  mapAttractionStatus() {
-    switch(this.attractionForm.controls.status.value) {
-      case '0':
-        return AttractionStatus.Active;
-      case '1':
-        return AttractionStatus.Inactive;
-      case '2':
-        return AttractionStatus.UnderConstruction;
-      case '3':
-        return AttractionStatus.UnderRenovation;
-      default:
-        return AttractionStatus.Inactive;
-    }
+    // this.attractionsService.createAttraction(newAttraction) ? this.router.navigate(['/', 'dashboard']): null;
+    this.attractionsService.createAttraction(newAttraction);
   }
 }

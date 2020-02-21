@@ -1,16 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SpacingPipe } from '@shared/pipes/spacing.pipe';
 
 @NgModule({
-  declarations: [
-    SpacingPipe
-  ],
+  declarations: [],
   imports: [
     CommonModule
   ],
-  exports: [
-    SpacingPipe,
-  ]
+  exports: []
 })
 export class SharedModule { }
