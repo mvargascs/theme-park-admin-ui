@@ -1,11 +1,15 @@
 .active {
-    color: green;
+  color: green;
 }
 
 .inactive {
-    color: red;
+  color: red;
 }
 
 .warn {
-    color: darkorange;
+  color: darkorange;
+}
+
+.mat-column-more {
+  flex: 0 0 50px;
 }

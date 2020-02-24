@@ -11,7 +11,7 @@ import { AttractionsService } from '@shared/services/attractions.service';
   styleUrls: ['./attractions.component.scss']
 })
 export class AttractionsComponent implements OnInit, OnDestroy {
-  displayedColumns: string[] = ['name', 'waittime', 'location', 'quicklane', 'status'];
+  displayedColumns: string[] = ['name', 'waittime', 'location', 'quicklane', 'status', 'more'];
   dataSource: MatTableDataSource<Attraction>;
   subs: Subscription = new Subscription();
 
@@ -32,6 +32,10 @@ export class AttractionsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subs.unsubscribe();
+  }
+
+  deleteAttraction(attraction: Attraction) {
+    this.attractionsService.deleteAttraction(attraction.id);
   }
 
   addDefaultAttractions() {

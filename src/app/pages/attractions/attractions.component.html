@@ -53,6 +53,22 @@
           </mat-cell>
         </ng-container>
 
+        <ng-container cdkColumnDef="more">
+          <mat-header-cell *cdkHeaderCellDef mat-sort-header></mat-header-cell>
+          <mat-cell *cdkCellDef="let row">
+            <mat-menu #appMenu="matMenu">
+              <ng-template matMenuContent>
+                <!-- <button mat-menu-item>Update</button> -->
+                <button mat-menu-item (click)="deleteAttraction(row)">Delete</button>
+              </ng-template>
+            </mat-menu>
+            
+            <button mat-icon-button [matMenuTriggerFor]="appMenu">
+              <mat-icon>more_horiz</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+
         <!-- Header and Row Declarations -->
         <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *cdkRowDef="let row; columns: displayedColumns"></mat-row>
