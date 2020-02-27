@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 import { AttractionsService } from '@shared/services/attractions.service';
+import { LocationService } from '@shared/services/location.service';
+
 import { Attraction } from '@shared/models/attraction';
-import { Observable } from 'rxjs';
-import { AttractionLocation } from '@shared/models/attraction-location';
+import { Location } from '@shared/models/location';
 import { AttractionStatus } from '@shared/models/attraction-status';
 
 @Component({
@@ -15,17 +17,18 @@ import { AttractionStatus } from '@shared/models/attraction-status';
 })
 export class CreateAttractionComponent implements OnInit {
   attractionForm: FormGroup;
-  locations$: Observable<AttractionLocation[]>;
+  locations$: Observable<Location[]>;
   statuses$: Observable<AttractionStatus[]>;
 
   constructor(
     private attractionsService: AttractionsService,
+    private locationService: LocationService,
     private fb: FormBuilder,
     private router: Router,
   ) { }
 
   ngOnInit() {
-    this.locations$ = this.attractionsService.getAttractionLocations();
+    this.locations$ = this.locationService.getLocations();
     this.statuses$ = this.attractionsService.getAttractionStatuses();
 
     this.attractionForm = this.fb.group({

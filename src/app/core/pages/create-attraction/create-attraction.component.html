@@ -19,8 +19,8 @@
         <mat-form-field appearance="outline">
           <mat-label>Location</mat-label>
           <mat-select formControlName="location">
-            <mat-option *ngFor="let l of locations$ | async" value="{{l.locationName}}">
-              {{l.locationName}}
+            <mat-option *ngFor="let l of locations$ | async" value="{{l.name}}">
+              {{l.name}}
             </mat-option>
           </mat-select>
         </mat-form-field>
