@@ -36,4 +36,12 @@ export class LocationService {
   private getDefaultLocations(): Promise<any> {
     return this.afs.firestore.collection('default-locations').get();
   }
+
+  // createLocation(location: Location): Promise<any> {
+  //   return this.locationsCollection.add(location);
+  // }
+
+  deleteLocation(id: string): Promise<void> {
+    return this.locationsCollection.doc(id).delete();
+  }
 }
