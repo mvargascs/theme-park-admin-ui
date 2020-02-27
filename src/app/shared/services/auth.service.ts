@@ -5,10 +5,6 @@ import { User } from '@shared/models/user';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { Attraction } from '@shared/models/attraction';
-import { AttractionLocation } from '@shared/models/attraction-location';
-import { AttractionStatus } from '@shared/models/attraction-status';
-import { AttractionsService } from './attractions.service';
 
 @Injectable({
   providedIn: 'root'
