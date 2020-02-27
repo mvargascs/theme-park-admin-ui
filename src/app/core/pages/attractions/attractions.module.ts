@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MaterialModule } from '@shared/modules/material.module';
+import { SharedModule } from '@shared/modules/shared.module';
 
 import { AttractionsRoutingModule } from './attractions-routing.module';
 import { AttractionsComponent } from './attractions.component';
-import { SharedModule } from '@shared/modules/shared.module';
 
 @NgModule({
   declarations: [

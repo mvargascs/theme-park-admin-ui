@@ -12,6 +12,7 @@ import {
   MatToolbarModule,
   MatTooltipModule,
   MatMenuModule,
+  MatSortModule,
 } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
 
@@ -28,6 +29,7 @@ import { CdkTableModule } from '@angular/cdk/table';
     MatSelectModule,
     MatSliderModule,
     MatSlideToggleModule,
+    MatSortModule,
     MatTableModule,
     MatToolbarModule,
     MatTooltipModule,
@@ -42,6 +44,7 @@ import { CdkTableModule } from '@angular/cdk/table';
     MatSelectModule,
     MatSliderModule,
     MatSlideToggleModule,
+    MatSortModule,
     MatTableModule,
     MatToolbarModule,
     MatTooltipModule,

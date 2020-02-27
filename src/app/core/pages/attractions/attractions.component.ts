@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort } from '@angular/material';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 import { Attraction } from '@shared/models/attraction';
 import { AttractionsService } from '@shared/services/attractions.service';
@@ -23,9 +23,11 @@ export class AttractionsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource([])
+    this.dataSource.sort = this.sort;
     this.subs.add(
       this.attractionsService.getAttractions().subscribe((attractions: Attraction[]) => {
         this.dataSource = new MatTableDataSource(attractions);
+        this.dataSource.sort = this.sort;
       })
     );
   }
@@ -45,5 +47,4 @@ export class AttractionsComponent implements OnInit, OnDestroy {
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
 }

@@ -26,14 +26,14 @@
         </ng-container>
 
         <!-- Location Definition -->
-        <ng-container cdkColumnDef="location" mat-sort-header>
-          <mat-header-cell *cdkHeaderCellDef> Location </mat-header-cell>
+        <ng-container cdkColumnDef="location">
+          <mat-header-cell *cdkHeaderCellDef mat-sort-header> Location </mat-header-cell>
           <mat-cell *cdkCellDef="let row"> {{row.location}} </mat-cell>
         </ng-container>
 
         <!-- QuickLane Definition -->
-        <ng-container cdkColumnDef="quicklane" mat-sort-header>
-          <mat-header-cell *cdkHeaderCellDef> QuickLane </mat-header-cell>
+        <ng-container cdkColumnDef="quicklane">
+          <mat-header-cell *cdkHeaderCellDef mat-sort-header> QuickLane </mat-header-cell>
           <mat-cell *cdkCellDef="let row">
             <span *ngIf="row.quicklane">
               <mat-icon>done</mat-icon>
@@ -42,8 +42,8 @@
         </ng-container>
 
         <!-- Status Definition -->
-        <ng-container cdkColumnDef="status" mat-sort-header>
-          <mat-header-cell *cdkHeaderCellDef> Status </mat-header-cell>
+        <ng-container cdkColumnDef="status">
+          <mat-header-cell *cdkHeaderCellDef mat-sort-header> Status </mat-header-cell>
           <mat-cell *cdkCellDef="let row">
             <div [ngSwitch]="row.status">
               <span *ngSwitchCase="'Active'" class="active">{{row.status}}</span>
@@ -54,7 +54,7 @@
         </ng-container>
 
         <ng-container cdkColumnDef="more">
-          <mat-header-cell *cdkHeaderCellDef mat-sort-header></mat-header-cell>
+          <mat-header-cell *cdkHeaderCellDef></mat-header-cell>
           <mat-cell *cdkCellDef="let row">
             <mat-menu #appMenu="matMenu">
               <ng-template matMenuContent>
