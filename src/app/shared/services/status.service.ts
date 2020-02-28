@@ -16,9 +16,9 @@ export class StatusService {
     private afs: AngularFirestore,
   ) { }
 
-  // createStatus(status: Status): Promise<any> {
-  //   return this.statusesCollection.add(status);
-  // }
+  createStatus(status: Status): Promise<any> {
+    return this.statusesCollection.add(status);
+  }
 
   /* Grab all documents in the statuses collection tied to the user, option added to return IDs of those documents as well. */
   getStatuses(): Observable<Status[]> {

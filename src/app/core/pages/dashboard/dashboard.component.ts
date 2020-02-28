@@ -31,6 +31,11 @@ export class DashboardComponent implements OnInit {
       description: 'View a list of locations available and their details.',
       url: '/locations'
     },
+    {
+      title: 'Create Location Form',
+      description: 'Create a location through a validated form.',
+      url: '/create-location'
+    },
   ];
 
   statusCards: OperationCard[] = [
@@ -38,6 +43,11 @@ export class DashboardComponent implements OnInit {
       title: 'View Statuses',
       description: 'View a list of statuses available and their details.',
       url: '/statuses'
+    },
+    {
+      title: 'Create Status Form',
+      description: 'Create a status through a validated form.',
+      url: '/create-status'
     },
   ];
 

@@ -16,9 +16,17 @@ export class LocationService {
     private afs: AngularFirestore,
   ) { }
 
+  createLocation(location: Location): Promise<any> {
+    return this.locationsCollection.add(location);
+  }
+
   /* Grab all documents in the locations collection tied to the user, option added to return IDs of those documents as well. */
   getLocations(): Observable<Location[]> {
     return this.locationsCollection.valueChanges({idField: 'id'});
+  }
+
+  deleteLocation(id: string): Promise<void> {
+    return this.locationsCollection.doc(id).delete();
   }
 
   addDefaultLocations() {
@@ -35,13 +43,5 @@ export class LocationService {
   /* Grab all documents in the default locations collection once. */
   private getDefaultLocations(): Promise<any> {
     return this.afs.firestore.collection('default-locations').get();
-  }
-
-  // createLocation(location: Location): Promise<any> {
-  //   return this.locationsCollection.add(location);
-  // }
-
-  deleteLocation(id: string): Promise<void> {
-    return this.locationsCollection.doc(id).delete();
   }
 }

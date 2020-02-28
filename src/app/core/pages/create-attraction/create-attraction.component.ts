@@ -54,8 +54,7 @@ export class CreateAttractionComponent implements OnInit {
 
     this.attractionsService.createAttraction(newAttraction)
       .then(() => {
-        // window.setTimeout(())
-        //this.router.navigate(['/', 'dashboard'])
+        this.router.navigate(['/', 'attractions'])
       });
   }
 }

@@ -1,0 +1,29 @@
+<div fxLayout="column" fxLayoutGap="1rem">
+  <mat-card>
+    <mat-card-title>
+      Create Location
+    </mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="locationForm" (ngSubmit)="createLocation()" fxLayout="column">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Location Name</mat-label>
+          <input matInput formControlName="locationName">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Opening Date</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="openingDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker startView="multi-year"></mat-datepicker>
+        </mat-form-field>
+
+        <div fxLayout="row" fxLayoutAlign="space-between">
+          <button mat-raised-button type="button" color="accent" routerLink="/dashboard">Cancle</button>
+          <button mat-raised-button type="submit" color="primary" [disabled]="locationForm.invalid">Create</button>
+        </div>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

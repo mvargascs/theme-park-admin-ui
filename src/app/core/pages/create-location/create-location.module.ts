@@ -6,20 +6,20 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '@shared/modules/material.module';
 import { SharedModule } from '@shared/modules/shared.module';
 
-import { CreateAttractionRoutingModule } from './create-attraction-routing.module';
-import { CreateAttractionComponent } from './create-attraction.component';
+import { CreateLocationRoutingModule } from './create-location-routing.module';
+import { CreateLocationComponent } from './create-location.component';
 
 @NgModule({
   declarations: [
-    CreateAttractionComponent
+    CreateLocationComponent
   ],
   imports: [
     CommonModule,
-    CreateAttractionRoutingModule,
+    CreateLocationRoutingModule,
     MaterialModule,
     FlexLayoutModule,
     ReactiveFormsModule,
     SharedModule,
   ]
 })
-export class CreateAttractionModule { }
+export class CreateLocationModule { }
