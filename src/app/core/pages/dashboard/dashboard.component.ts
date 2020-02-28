@@ -8,7 +8,7 @@ import { OperationCard } from '@shared/models/operation-card';
 })
 export class DashboardComponent implements OnInit {
 
-  cards: OperationCard[] = [
+  attractionCards: OperationCard[] = [
     {
       title: 'View Attractions',
       description: 'View a list of attractions available and their details.',
@@ -19,21 +19,27 @@ export class DashboardComponent implements OnInit {
       description: 'Create an attraction through a validated form.',
       url: '/create-attraction'
     },
+    // {
+    //   title: 'Import Attraction JSON',
+    //   description: 'Create an attraction from a JSON object.'
+    // },
+  ];
+
+  locationCards: OperationCard[] = [
     {
       title: 'View Locations',
       description: 'View a list of locations available and their details.',
       url: '/locations'
     },
+  ];
+
+  statusCards: OperationCard[] = [
     {
       title: 'View Statuses',
       description: 'View a list of statuses available and their details.',
       url: '/statuses'
     },
-    // {
-    //   title: 'Import Attraction JSON',
-    //   description: 'Create an attraction from a JSON object.'
-    // },
-  ]
+  ];
 
   constructor() { }
 

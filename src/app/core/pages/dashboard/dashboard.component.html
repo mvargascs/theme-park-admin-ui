@@ -1,6 +1,37 @@
 <div fxLayout="column" fxLayoutGap="1rem">
+  <div class="section-header">Attractions</div>
   <div fxLayout="row" fxLayoutGap="1rem">
-    <div *ngFor="let card of cards" fxFlex="25">
+    <div *ngFor="let card of attractionCards" fxFlex="25">
+      <a routerLink="{{card.url}}">
+        <mat-card>
+          <mat-card-title>
+            {{card.title}}
+          </mat-card-title>
+          <mat-card-content>
+            {{card.description}}
+          </mat-card-content>
+        </mat-card>
+      </a>
+    </div>
+  </div>
+  <div class="section-header">Locations</div>
+  <div fxLayout="row" fxLayoutGap="1rem">
+    <div *ngFor="let card of locationCards" fxFlex="25">
+      <a routerLink="{{card.url}}">
+        <mat-card>
+          <mat-card-title>
+            {{card.title}}
+          </mat-card-title>
+          <mat-card-content>
+            {{card.description}}
+          </mat-card-content>
+        </mat-card>
+      </a>
+    </div>
+  </div>
+  <div class="section-header">Statuses</div>
+  <div fxLayout="row" fxLayoutGap="1rem">
+    <div *ngFor="let card of statusCards" fxFlex="25">
       <a routerLink="{{card.url}}">
         <mat-card>
           <mat-card-title>
