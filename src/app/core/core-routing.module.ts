@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'attractions', loadChildren: () => import('./pages/attractions/attractions.module').then(m => m.AttractionsModule), canLoad: [AuthGuard] },
   { path: 'create-attraction', loadChildren: () => import('./pages/create-attraction/create-attraction.module').then(m => m.CreateAttractionModule), canLoad: [AuthGuard] },
   { path: 'locations', loadChildren: () => import('./pages/locations/locations.module').then(m => m.LocationsModule), canLoad: [AuthGuard] },
+  { path: 'statuses', loadChildren: () => import('./pages/statuses/statuses.module').then(m => m.StatusesModule), canLoad: [AuthGuard] },
   {
     path: '**',
     redirectTo: '/login',

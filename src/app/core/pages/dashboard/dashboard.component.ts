@@ -24,14 +24,15 @@ export class DashboardComponent implements OnInit {
       description: 'View a list of locations available and their details.',
       url: '/locations'
     },
+    {
+      title: 'View Statuses',
+      description: 'View a list of statuses available and their details.',
+      url: '/statuses'
+    },
     // {
     //   title: 'Import Attraction JSON',
     //   description: 'Create an attraction from a JSON object.'
     // },
-    // {
-    //   title: 'Delete an Attraction',
-    //   description: 'Pick an attraction from a dropdown to remove from the list of rides.'
-    // }
   ]
 
   constructor() { }

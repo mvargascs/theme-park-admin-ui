@@ -26,7 +26,6 @@ export class LocationsComponent implements OnInit, OnDestroy {
     this.dataSource.sort = this.sort;
     this.subs.add(
       this.locationService.getLocations().subscribe((locations: Location[]) => {
-        console.dir(locations);
         this.dataSource = new MatTableDataSource(locations);
         this.dataSource.sort = this.sort;
       })

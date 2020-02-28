@@ -3,8 +3,7 @@ import { AngularFirestore, QuerySnapshot } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 import { Attraction } from '@shared/models/attraction';
-import { Location } from '@shared/models/location';
-import { AttractionStatus } from '@shared/models/attraction-status';
+import { Status } from '@shared/models/status';
 import { AngularFireAuth } from '@angular/fire/auth';
 
 @Injectable({
@@ -12,25 +11,19 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class AttractionsService {
   private attractionsCollection = this.afs.collection<Attraction>(`users/${this.afAuth.auth.currentUser.uid}/attractions`);
-  private statusesCollection = this.afs.collection<AttractionStatus>(`users/${this.afAuth.auth.currentUser.uid}/statuses`);
 
   constructor(
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
   ) { }
 
+  createAttraction(attraction: Attraction): Promise<any> {
+    return this.attractionsCollection.add(attraction);
+  }
+
   /* Grab all documents in the attractions collection tied to the user, option added to return IDs of those documents as well. */
   getAttractions(): Observable<Attraction[]> {
     return this.attractionsCollection.valueChanges({idField: 'id'});
-  }
-
-  /* Grab all documents in the statuses collection tied to the user, option added to return IDs of those documents as well. */
-  getAttractionStatuses(): Observable<AttractionStatus[]> {
-    return this.statusesCollection.valueChanges({idField: 'id'});
-  }
-
-  createAttraction(attraction: Attraction): Promise<any> {
-    return this.attractionsCollection.add(attraction);
   }
 
   deleteAttraction(id: string): Promise<void> {
@@ -51,21 +44,5 @@ export class AttractionsService {
   /* Grab all documents in the default attractions collection once. */
   private getDefaultAttractions(): Promise<any> {
     return this.afs.firestore.collection('default-attractions').get();
-  }
-
-  addDefaultStatuses() {
-    this.getDefaultStatuses().then((res: QuerySnapshot<any>) => {
-      res.forEach(doc => {
-        // Cast the data of each doc returned to a status, add that status to the user's statuses collection
-        const defaultStatus = doc.data() as AttractionStatus;
-
-        this.statusesCollection.add(defaultStatus);
-      })
-    });
-  }
-
-  /* Grab all documents in the default statuses collection once. */
-  private getDefaultStatuses(): Promise<any> {
-    return this.afs.firestore.collection('default-statuses').get();
   }
 }

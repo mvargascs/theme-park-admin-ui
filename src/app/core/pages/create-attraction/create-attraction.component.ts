@@ -5,10 +5,11 @@ import { Observable } from 'rxjs';
 
 import { AttractionsService } from '@shared/services/attractions.service';
 import { LocationService } from '@shared/services/location.service';
+import { StatusService } from '@shared/services/status.service';
 
 import { Attraction } from '@shared/models/attraction';
 import { Location } from '@shared/models/location';
-import { AttractionStatus } from '@shared/models/attraction-status';
+import { Status } from '@shared/models/status';
 
 @Component({
   selector: 'app-create-attraction',
@@ -18,18 +19,19 @@ import { AttractionStatus } from '@shared/models/attraction-status';
 export class CreateAttractionComponent implements OnInit {
   attractionForm: FormGroup;
   locations$: Observable<Location[]>;
-  statuses$: Observable<AttractionStatus[]>;
+  statuses$: Observable<Status[]>;
 
   constructor(
     private attractionsService: AttractionsService,
     private locationService: LocationService,
+    private statusService: StatusService,
     private fb: FormBuilder,
     private router: Router,
   ) { }
 
   ngOnInit() {
     this.locations$ = this.locationService.getLocations();
-    this.statuses$ = this.attractionsService.getAttractionStatuses();
+    this.statuses$ = this.statusService.getStatuses();
 
     this.attractionForm = this.fb.group({
       name: ['', Validators.required],
@@ -50,8 +52,10 @@ export class CreateAttractionComponent implements OnInit {
       quicklane: this.attractionForm.controls.quicklane.value,
     }
 
-    // The service will turn into creating firebase documents and will handle routing
-    // this.attractionsService.createAttraction(newAttraction) ? this.router.navigate(['/', 'dashboard']): null;
-    this.attractionsService.createAttraction(newAttraction);
+    this.attractionsService.createAttraction(newAttraction)
+      .then(() => {
+        // window.setTimeout(())
+        //this.router.navigate(['/', 'dashboard'])
+      });
   }
 }
