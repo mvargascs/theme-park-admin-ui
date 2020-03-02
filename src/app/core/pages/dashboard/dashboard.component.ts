@@ -19,11 +19,6 @@ export class DashboardComponent implements OnInit {
       description: 'Create an attraction through a validated form.',
       url: '/create-attraction'
     },
-    {
-      title: 'Import Attractions',
-      description: 'Create attractions from a JSON array.',
-      url: '/import-attractions'
-    },
   ];
 
   locationCards: OperationCard[] = [
