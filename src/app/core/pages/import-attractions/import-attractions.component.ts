@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 
 import { AttractionsService } from '@shared/services/attractions.service';
 
-import { Status } from '@shared/models/status';
 import { Attraction } from '@shared/models/attraction';
 
 @Component({
@@ -16,6 +15,8 @@ export class ImportAttractionsComponent implements OnInit {
   private attractionsToImport: Attraction[];
   
   attractionJsonForm: FormGroup;
+
+  invalidJson = false;
 
   constructor(
     private attractionsService: AttractionsService,
@@ -31,7 +32,12 @@ export class ImportAttractionsComponent implements OnInit {
 
   importAttractions() {
     let imported = 0;
-    if (this.isValidJson(this.attractionJsonForm.controls.attractionsJson.value)) {
+    this.invalidJson = false;
+    const json = this.attractionJsonForm.controls.attractionsJson.value;
+    
+    if (this.isJsonArray(json) && this.isValidJson(json)) {
+      this.attractionsToImport = JSON.parse(json);
+
       this.attractionsToImport.forEach(attraction => {
         this.attractionsService.createAttraction(attraction)
           .then(() => {
@@ -41,13 +47,19 @@ export class ImportAttractionsComponent implements OnInit {
           });
       });
     }
+    else {
+      this.invalidJson = true;
+    }
   }
 
-  private isValidJson(json: string) {
+  private isJsonArray(json: string): boolean {
+    return json.startsWith('[') && json.endsWith(']');
+  }
+
+  private isValidJson(json: string): boolean {
     try {
       const obj = JSON.parse(json);
       if (obj && typeof obj === 'object' && obj !== null) {
-        this.attractionsToImport = obj;
         return true;
       }
     } catch (error) { }

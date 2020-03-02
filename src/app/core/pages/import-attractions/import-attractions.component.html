@@ -6,8 +6,10 @@
     <mat-card-content>
       <form [formGroup]="attractionJsonForm" (ngSubmit)="importAttractions()" fxLayout="column">
 
+        <div *ngIf="invalidJson" class="invalid-json">Invalid JSON: make sure JSON is valid and an array</div>
+
         <mat-form-field appearance="outline">
-          <mat-label>JSON</mat-label>
+          <mat-label>JSON Array</mat-label>
           <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="10" formControlName="attractionsJson"></textarea>
         </mat-form-field>
 
