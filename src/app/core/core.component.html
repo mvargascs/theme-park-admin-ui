@@ -1,7 +1,7 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
     <a class="toolbar-title" routerLink="/dashboard">Theme Park Admin</a>
-    <button mat-raised-button *ngIf="auth.user$ | async" (click)="signOut()">Sign out</button>
+    <button mat-raised-button *ngIf="user$ | async" (click)="signOut()">Sign out</button>
   </mat-toolbar-row>
 </mat-toolbar>
 <div class="container">
