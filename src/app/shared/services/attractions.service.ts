@@ -26,6 +26,17 @@ export class AttractionsService {
     return this.attractionsCollection.valueChanges({idField: 'id'});
   }
 
+  updateAttraction(attraction: Attraction) {
+    return this.attractionsCollection.doc(attraction.id).update({
+      name: attraction.name,
+      description: attraction.description,
+      location: attraction.location,
+      waittime: attraction.waittime,
+      status: attraction.status,
+      quicklane: attraction.quicklane,
+    });
+  }
+
   deleteAttraction(id: string): Promise<void> {
     return this.attractionsCollection.doc(id).delete();
   }
