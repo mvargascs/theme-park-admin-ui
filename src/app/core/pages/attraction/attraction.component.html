@@ -1,0 +1,6 @@
+<div *ngIf="attractionId; else createForm">
+  <app-attraction-form [id]="attractionId"></app-attraction-form>
+</div>
+<ng-template #createForm>
+    <app-attraction-form></app-attraction-form>
+</ng-template>

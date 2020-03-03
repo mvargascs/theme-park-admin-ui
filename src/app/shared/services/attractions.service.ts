@@ -26,6 +26,10 @@ export class AttractionsService {
     return this.attractionsCollection.valueChanges({idField: 'id'});
   }
 
+  getAttraction(id: string): Promise<any> {
+    return this.afs.firestore.collection(`users/${this.afAuth.auth.currentUser.uid}/attractions`).doc(id).get();
+  }
+
   updateAttraction(attraction: Attraction) {
     return this.attractionsCollection.doc(attraction.id).update({
       name: attraction.name,

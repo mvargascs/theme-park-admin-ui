@@ -25,6 +25,8 @@ export class AttractionFormComponent implements OnInit {
   locations$: Observable<Location[]>;
   statuses$: Observable<Status[]>;
   currentTitle: string;
+  
+  formPopulated = false;
 
   constructor(
     private attractionsService: AttractionsService,
@@ -48,14 +50,19 @@ export class AttractionFormComponent implements OnInit {
       waittime: [0],
       quicklane: [false, Validators.required],
     });
+
+    this.setForm()
+      .then(() => {
+        this.formPopulated = true;
+      });
+  }
+
+  cancel() {
+    this.id ? this.router.navigate(['/', 'attractions']) : this.router.navigate(['/', 'dashboard']);
   }
 
   submitAttraction(): void {
-    if (this.id) {
-      this.updateAttraction();
-    }
-
-    this.createAttraction();
+    this.id ? this.updateAttraction() : this.createAttraction();
   }
 
   private createAttraction() {
@@ -92,10 +99,28 @@ export class AttractionFormComponent implements OnInit {
   }
 
   private setTitle(): string {
-    if (this.id) {
-      return this.formTitles[1];
-    }
+    return this.id ? this.formTitles[1] : this.formTitles[0];
+  }
 
-    return this.formTitles[0];
+  private setForm(): Promise<void> {
+    if (this.id) {
+      let attraction: Attraction = null;
+      return this.attractionsService.getAttraction(this.id)
+        .then((doc) => {
+          attraction = doc.data() as Attraction
+
+          this.attractionForm.patchValue({
+            name: attraction.name,
+            description: attraction.description,
+            location: attraction.location,
+            status: attraction.status,
+            waittime: attraction.waittime,
+            quicklane: attraction.quicklane,
+          });
+        });
+    }
+    else {
+      return Promise.resolve();
+    }
   }
 }

@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 
 import { Attraction } from '@shared/models/attraction';
 import { AttractionsService } from '@shared/services/attractions.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-attractions',
@@ -19,7 +20,8 @@ export class AttractionsComponent implements OnInit, OnDestroy {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   constructor(
-    private attractionsService: AttractionsService
+    private attractionsService: AttractionsService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -35,6 +37,10 @@ export class AttractionsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subs.unsubscribe();
+  }
+
+  updateAttraction(attraction: Attraction) {
+    this.router.navigate(['/', 'attraction', attraction.id])
   }
 
   deleteAttraction(attraction: Attraction) {
