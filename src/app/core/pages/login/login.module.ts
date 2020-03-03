@@ -15,8 +15,6 @@ import { LoginComponent } from './login.component';
     CommonModule,
     LoginRoutingModule,
     MaterialModule,
-    FlexLayoutModule,
-    ReactiveFormsModule,
     SharedModule,
   ]
 })

@@ -15,8 +15,6 @@ import { RegisterComponent } from './register.component';
     CommonModule,
     RegisterRoutingModule,
     MaterialModule,
-    FlexLayoutModule,
-    ReactiveFormsModule,
     SharedModule,
   ]
 })

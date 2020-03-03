@@ -17,8 +17,6 @@ import { CreateStatusComponent } from './create-status.component';
     CommonModule,
     CreateStatusRoutingModule,
     MaterialModule,
-    FlexLayoutModule,
-    ReactiveFormsModule,
     SharedModule,
   ]
 })

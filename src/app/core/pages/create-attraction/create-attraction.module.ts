@@ -17,8 +17,6 @@ import { CreateAttractionComponent } from './create-attraction.component';
     CommonModule,
     CreateAttractionRoutingModule,
     MaterialModule,
-    FlexLayoutModule,
-    ReactiveFormsModule,
     SharedModule,
   ]
 })

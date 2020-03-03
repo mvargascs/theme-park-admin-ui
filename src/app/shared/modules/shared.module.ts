@@ -1,16 +1,20 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { TimestampPipe } from '@shared/pipe/timestamp.pipe';
+
+import { AttractionFormComponent } from '@shared/components/attraction-form/attraction-form.component';
 
 @NgModule({
   declarations: [
-    TimestampPipe
-  ],
-  imports: [
-    CommonModule
+    TimestampPipe,
+    AttractionFormComponent
   ],
   exports: [
-    TimestampPipe
+    TimestampPipe,
+    FlexLayoutModule,
+    ReactiveFormsModule,
   ]
 })
 export class SharedModule { }

@@ -17,8 +17,6 @@ import { CreateLocationComponent } from './create-location.component';
     CommonModule,
     CreateLocationRoutingModule,
     MaterialModule,
-    FlexLayoutModule,
-    ReactiveFormsModule,
     SharedModule,
   ]
 })
