@@ -17,25 +17,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { CdkTableModule } from '@angular/cdk/table';
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
-    CdkTableModule,
-    MatButtonModule,
-    MatCardModule,
-    MatDatepickerModule,
-    MatIconModule,
-    MatInputModule,
-    MatMenuModule,
-    MatNativeDateModule,
-    MatSelectModule,
-    MatSliderModule,
-    MatSlideToggleModule,
-    MatSortModule,
-    MatTableModule,
-    MatToolbarModule,
-    MatTooltipModule,
-  ],
   exports: [
     CdkTableModule,
     MatButtonModule,
