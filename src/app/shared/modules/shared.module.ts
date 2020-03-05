@@ -1,18 +1,20 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { MaterialModule } from '@shared/modules/material.module';
 
-import { TimestampPipe } from '@shared/pipe/timestamp.pipe';
-
 import { AttractionFormComponent } from '@shared/components/attraction-form/attraction-form.component';
-import { CommonModule } from '@angular/common';
+
+import { BooleanToStringPipe } from '@shared/pipe/boolean-to-string.pipe';
+import { TimestampToDatePipe } from '@shared/pipe/timestamp-to-date.pipe';
 
 @NgModule({
   declarations: [
     AttractionFormComponent,
-    TimestampPipe,
+    BooleanToStringPipe,
+    TimestampToDatePipe,
   ],
   imports: [
     CommonModule,
@@ -21,10 +23,11 @@ import { CommonModule } from '@angular/common';
     ReactiveFormsModule,
   ],
   exports: [
-    AttractionFormComponent,
-    TimestampPipe,
     FlexLayoutModule,
     ReactiveFormsModule,
+    AttractionFormComponent,
+    BooleanToStringPipe,
+    TimestampToDatePipe,
   ]
 })
 export class SharedModule { }

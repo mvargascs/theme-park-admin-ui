@@ -20,7 +20,7 @@
         <ng-container cdkColumnDef="openingDate">
           <mat-header-cell *cdkHeaderCellDef mat-sort-header> Opening Date </mat-header-cell>
           <mat-cell *cdkCellDef="let row">
-            <span *ngIf="row.openingDate; else nullDate">{{row.openingDate | timestamp | date:'longDate'}}</span>
+            <span *ngIf="row.openingDate; else nullDate">{{row.openingDate | timestampToDate | date:'longDate'}}</span>
             <ng-template #nullDate>--</ng-template>
           </mat-cell>
         </ng-container>
