@@ -39,4 +39,16 @@ export class AuthGuard implements CanActivate, CanLoad {
       })
     )
   }
+
+  resolve(): Observable<boolean> {
+    return this.auth.user$.pipe(
+      take(1),
+      map(user => !!user), // <-- map to boolean
+      tap(loggedIn => {
+        if (loggedIn) {
+          this.router.navigate(['/dashboard']);
+        }
+      })
+    )
+  }
 }
