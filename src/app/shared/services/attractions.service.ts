@@ -51,7 +51,7 @@ export class AttractionsService {
         const defaultAttraction = doc.data() as Attraction;
 
         this.attractionsCollection.add(defaultAttraction);
-      })
+      });
     });
   }
 

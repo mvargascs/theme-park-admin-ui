@@ -23,7 +23,7 @@ export class AuthGuard implements CanActivate, CanLoad {
           this.router.navigate(['/']);
         }
       })
-    )
+    );
   }
   canLoad(
     route: Route,
@@ -37,7 +37,7 @@ export class AuthGuard implements CanActivate, CanLoad {
           this.router.navigate(['/']);
         }
       })
-    )
+    );
   }
 
   resolve(): Observable<boolean> {
@@ -49,6 +49,6 @@ export class AuthGuard implements CanActivate, CanLoad {
           this.router.navigate(['/dashboard']);
         }
       })
-    )
+    );
   }
 }

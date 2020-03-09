@@ -23,7 +23,7 @@ export class StatusesComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.dataSource = new MatTableDataSource([])
+    this.dataSource = new MatTableDataSource([]);
     this.dataSource.sort = this.sort;
     this.subs.add(
       this.statusService.getStatuses().subscribe((statuses: Status[]) => {

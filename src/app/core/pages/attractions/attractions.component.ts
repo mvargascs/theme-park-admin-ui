@@ -25,7 +25,7 @@ export class AttractionsComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.dataSource = new MatTableDataSource([])
+    this.dataSource = new MatTableDataSource([]);
     this.dataSource.sort = this.sort;
     this.subs.add(
       this.attractionsService.getAttractions().subscribe((attractions: Attraction[]) => {
@@ -40,7 +40,7 @@ export class AttractionsComponent implements OnInit, OnDestroy {
   }
 
   updateAttraction(attraction: Attraction) {
-    this.router.navigate(['/', 'attraction', attraction.id])
+    this.router.navigate(['/', 'attraction', attraction.id]);
   }
 
   deleteAttraction(attraction: Attraction) {

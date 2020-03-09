@@ -36,7 +36,7 @@ export class LocationService {
         const defaultLocation = doc.data() as Location;
 
         this.locationsCollection.add(defaultLocation);
-      })
+      });
     });
   }
 

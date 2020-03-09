@@ -35,7 +35,7 @@ export class CreateStatusComponent implements OnInit {
 
     this.statusService.createStatus(newStatus)
       .then(() => {
-        this.router.navigate(['/', 'statuses'])
+        this.router.navigate(['/', 'statuses']);
       });
   }
 }

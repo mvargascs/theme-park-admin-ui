@@ -36,7 +36,7 @@ export class StatusService {
         const defaultStatus = doc.data() as Status;
 
         this.statusesCollection.add(defaultStatus);
-      })
+      });
     });
   }
 

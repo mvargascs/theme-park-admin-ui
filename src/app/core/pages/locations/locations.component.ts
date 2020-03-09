@@ -23,7 +23,7 @@ export class LocationsComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.dataSource = new MatTableDataSource([])
+    this.dataSource = new MatTableDataSource([]);
     this.dataSource.sort = this.sort;
     this.subs.add(
       this.locationService.getLocations().subscribe((locations: Location[]) => {

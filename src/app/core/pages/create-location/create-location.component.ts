@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase/app';
-import Timestamp = firebase.firestore.Timestamp
+import Timestamp = firebase.firestore.Timestamp;
 
 import { LocationService } from '@shared/services/location.service';
 
@@ -41,7 +41,7 @@ export class CreateLocationComponent implements OnInit {
 
     this.locationService.createLocation(newLocation)
       .then(() => {
-        this.router.navigate(['/', 'locations'])
+        this.router.navigate(['/', 'locations']);
       });
   }
 }

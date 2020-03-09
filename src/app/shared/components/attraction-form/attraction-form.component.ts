@@ -19,13 +19,13 @@ import { Status } from '@shared/models/status';
 export class AttractionFormComponent implements OnInit {
   @Input() id: string;
 
-  private formTitles = ['Create Attraction', 'Update Attraction']
+  private formTitles = ['Create Attraction', 'Update Attraction'];
 
   attractionForm: FormGroup;
   locations$: Observable<Location[]>;
   statuses$: Observable<Status[]>;
   currentTitle: string;
-  
+
   formPopulated = false;
 
   constructor(
@@ -77,7 +77,7 @@ export class AttractionFormComponent implements OnInit {
 
     this.attractionsService.createAttraction(newAttraction)
       .then(() => {
-        this.router.navigate(['/', 'attractions'])
+        this.router.navigate(['/', 'attractions']);
       });
   }
 
@@ -94,7 +94,7 @@ export class AttractionFormComponent implements OnInit {
 
     this.attractionsService.updateAttraction(attraction)
       .then(() => {
-        this.router.navigate(['/', 'attractions'])
+        this.router.navigate(['/', 'attractions']);
       });
   }
 
@@ -107,7 +107,7 @@ export class AttractionFormComponent implements OnInit {
       let attraction: Attraction = null;
       return this.attractionsService.getAttraction(this.id)
         .then((doc) => {
-          attraction = doc.data() as Attraction
+          attraction = doc.data() as Attraction;
 
           this.attractionForm.patchValue({
             name: attraction.name,
@@ -118,8 +118,7 @@ export class AttractionFormComponent implements OnInit {
             quicklane: attraction.quicklane,
           });
         });
-    }
-    else {
+    } else {
       return Promise.resolve();
     }
   }

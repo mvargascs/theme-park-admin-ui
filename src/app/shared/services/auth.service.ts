@@ -28,7 +28,7 @@ export class AuthService {
           return of(null);
         }
       })
-    )
+    );
   }
 
   registerUser(email: string, password: string): Promise<void> {
@@ -64,13 +64,13 @@ export class AuthService {
       photoUrl: user.photoURL
     };
 
-    return userRef.set(data, { merge: true })
+    return userRef.set(data, { merge: true });
   }
 
   signOut(): Promise<void> {
     this.authError$ = this.setAuthError(null);
 
-    return this.afAuth.auth.signOut().finally(() => { this.router.navigate(['/']); })
+    return this.afAuth.auth.signOut().finally(() => { this.router.navigate(['/']); });
   }
 
   private setAuthError(err: firebase.auth.Error): Observable<string> {

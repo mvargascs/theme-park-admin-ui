@@ -1,5 +1,5 @@
 import * as firebase from 'firebase/app';
-import Timestamp = firebase.firestore.Timestamp
+import Timestamp = firebase.firestore.Timestamp;
 
 export interface Attraction {
     id?: string;
