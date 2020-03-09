@@ -3,7 +3,6 @@ import { AngularFirestore, QuerySnapshot } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 import { Attraction } from '@shared/models/attraction';
-import { Status } from '@shared/models/status';
 import { AngularFireAuth } from '@angular/fire/auth';
 
 @Injectable({
