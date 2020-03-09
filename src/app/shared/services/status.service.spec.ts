@@ -3,10 +3,14 @@ import { TestBed } from '@angular/core/testing';
 import { StatusService } from './status.service';
 
 describe('StatusService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  let service: StatusService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(StatusService);
+  });
 
   it('should be created', () => {
-    const service: StatusService = TestBed.get(StatusService);
     expect(service).toBeTruthy();
   });
 });
