@@ -1,5 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { LocationService } from '@shared/services/location.service';
+
+import { MockLocationService } from '@testing/services/location.service';
+
 import { LocationsComponent } from './locations.component';
 
 describe('LocationsComponent', () => {
@@ -8,7 +12,10 @@ describe('LocationsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LocationsComponent ]
+      declarations: [ LocationsComponent ],
+      providers: [
+        { provide: LocationService, useClass: MockLocationService },
+      ]
     })
     .compileComponents();
   }));

@@ -1,5 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { StatusService } from '@shared/services/status.service';
+
+import { MockStatusService } from '@testing/services/status.service';
+
 import { StatusesComponent } from './statuses.component';
 
 describe('StatusesComponent', () => {
@@ -8,7 +12,10 @@ describe('StatusesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StatusesComponent ]
+      declarations: [ StatusesComponent ],
+      providers: [
+        { provide: StatusService, useClass: MockStatusService },
+      ]
     })
     .compileComponents();
   }));

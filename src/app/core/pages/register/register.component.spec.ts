@@ -1,4 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { AuthService } from '@shared/services/auth.service';
+
+import { MockAuthService } from '@testing/services/auth.service';
+import { mockRouter } from '@testing/data/router';
 
 import { RegisterComponent } from './register.component';
 
@@ -8,9 +15,16 @@ describe('RegisterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RegisterComponent ]
+      declarations: [RegisterComponent],
+      providers: [
+        { provide: AuthService, useClass: MockAuthService },
+        { provide: Router, useValue: mockRouter }
+      ],
+      imports: [
+        ReactiveFormsModule
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
