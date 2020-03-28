@@ -12,5 +12,4 @@ export class BooleanToStringPipe implements PipeTransform {
       return value;
     }
   }
-
 }

@@ -5,7 +5,7 @@ describe('BooleanToStringPipe', () => {
 
   beforeEach(() => {
     pipe = new BooleanToStringPipe();
-  })
+  });
 
   it('create an instance', () => {
     expect(pipe).toBeTruthy();
@@ -21,13 +21,13 @@ describe('BooleanToStringPipe', () => {
 
     it('should return null', () => {
       const actual = pipe.transform(null);
-      
+
       expect(actual).toEqual(null);
     });
 
     it('should return undefined', () => {
       const actual = pipe.transform(undefined);
-      
+
       expect(actual).toEqual(undefined);
     });
 
@@ -55,7 +55,7 @@ describe('BooleanToStringPipe', () => {
       const expectedValue = 'No';
 
       const actualValue = pipe.transform(testInput);
-      
+
       expect(actualValue).toEqual(expectedValue);
     });
   });
