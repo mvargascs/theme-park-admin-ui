@@ -29,7 +29,9 @@ describe('AttractionFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AttractionFormComponent ],
+      declarations: [
+        AttractionFormComponent
+      ],
       imports: [
         MatButtonModule,
         MatCardModule,

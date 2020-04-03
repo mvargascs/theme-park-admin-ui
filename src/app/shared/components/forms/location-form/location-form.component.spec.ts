@@ -22,7 +22,9 @@ describe('LocationFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LocationFormComponent ],
+      declarations: [
+        LocationFormComponent
+      ],
       imports: [
         MatButtonModule,
         MatCardModule,

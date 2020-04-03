@@ -20,7 +20,9 @@ describe('StatusFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StatusFormComponent ],
+      declarations: [
+        StatusFormComponent
+      ],
       imports: [
         MatButtonModule,
         MatCardModule,
