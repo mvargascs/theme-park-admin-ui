@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Router } from '@angular/router';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CdkTableModule } from '@angular/cdk/table';
@@ -14,8 +13,6 @@ import { MatTableModule } from '@angular/material/table';
 import { StatusService } from '@shared/services/status.service';
 
 import { MockStatusService } from '@testing/services/status.service';
-
-import { mockRouter } from '@testing/data/router';
 
 import { StatusesComponent } from './statuses.component';
 
@@ -41,7 +38,6 @@ describe('StatusesComponent', () => {
       ],
       providers: [
         { provide: StatusService, useClass: MockStatusService },
-        { provide: Router, useValue: mockRouter }
       ]
     })
     .compileComponents();

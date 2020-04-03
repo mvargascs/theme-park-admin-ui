@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { MatSort } from '@angular/material/sort';
@@ -22,7 +21,6 @@ export class StatusesComponent implements OnInit, OnDestroy {
 
   constructor(
     private statusService: StatusService,
-    private router: Router
   ) { }
 
   ngOnInit() {
@@ -38,10 +36,6 @@ export class StatusesComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subs.unsubscribe();
-  }
-
-  updateStatus(status: Status) {
-    this.router.navigate(['/', 'status', status.id]);
   }
 
   deleteStatus(status: Status) {
