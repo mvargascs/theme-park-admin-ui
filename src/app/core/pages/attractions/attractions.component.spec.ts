@@ -1,13 +1,23 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
+import { CdkTableModule } from '@angular/cdk/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
 
 import { AttractionsService } from '@shared/services/attractions.service';
+
+import { MockAttractionsService } from '@testing/services/attraction.service';
 
 import { attractions } from '@testing/data/attractions';
 import { mockRouter } from '@testing/data/router';
 
 import { AttractionsComponent } from './attractions.component';
-import { MockAttractionsService } from '@testing/services/attraction.service';
 
 const collectionStub = {
   valueChanges: jasmine.createSpy('valueChanges').and.returnValue(attractions)
@@ -24,6 +34,16 @@ describe('AttractionsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ AttractionsComponent ],
+      imports: [
+        CdkTableModule,
+        MatButtonModule,
+        MatCardModule,
+        MatIconModule,
+        MatInputModule,
+        MatSortModule,
+        MatTableModule,
+        NoopAnimationsModule,
+      ],
       providers: [
         { provide: AttractionsService, useClass: MockAttractionsService },
         { provide: Router, useValue: mockRouter }

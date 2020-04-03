@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { Attraction } from '@shared/models/attraction';
 
 import { attractions } from '@testing/data/attractions';
+import { AttractionDocument } from '@testing/data/attraction-doc';
 
 export class MockAttractionsService {
     createAttraction(attraction: Attraction): Promise<any> {
@@ -16,12 +17,11 @@ export class MockAttractionsService {
     }
 
     getAttraction(id: string): Promise<any> {
-        return null;
-        // return this.afs.firestore.collection(`users/${this.afAuth.auth.currentUser.uid}/attractions`).doc(id).get();
+        return Promise.resolve(new AttractionDocument());
     }
 
     updateAttraction(attraction: Attraction) {
-        return null;
+        return Promise.resolve();
         // return this.attractionsCollection.doc(attraction.id).update({
         //     name: attraction.name,
         //     description: attraction.description,
