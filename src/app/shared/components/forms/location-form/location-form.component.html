@@ -1,10 +1,10 @@
 <div fxLayout="column" fxLayoutGap="1rem">
   <mat-card>
     <mat-card-title>
-      Create Location
+      {{currentOperation}} Location
     </mat-card-title>
-    <mat-card-content>
-      <form [formGroup]="locationForm" (ngSubmit)="createLocation()" fxLayout="column">
+    <mat-card-content *ngIf="formPopulated">
+      <form [formGroup]="locationForm" (ngSubmit)="submitLocation()" fxLayout="column">
 
         <mat-form-field appearance="outline">
           <mat-label>Location Name</mat-label>
@@ -19,8 +19,8 @@
         </mat-form-field>
 
         <div fxLayout="row" fxLayoutAlign="space-between">
-          <button mat-raised-button type="button" color="accent" routerLink="/dashboard">Cancle</button>
-          <button mat-raised-button type="submit" color="primary" [disabled]="locationForm.invalid">Create</button>
+          <button mat-raised-button type="button" color="accent" (click)="cancel()">Cancle</button>
+          <button mat-raised-button type="submit" color="primary" [disabled]="locationForm.invalid">{{currentOperation}}</button>
         </div>
 
       </form>

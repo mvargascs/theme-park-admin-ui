@@ -25,6 +25,17 @@ export class StatusService {
     return this.statusesCollection.valueChanges({idField: 'id'});
   }
 
+  getStatus(id: string): Promise<any> {
+    return this.afs.firestore.collection(`users/${this.afAuth.auth.currentUser.uid}/statuses`).doc(id).get();
+  }
+
+  updateStatus(status: Status) {
+    return this.statusesCollection.doc(status.id).update({
+      status: status.status,
+      description: status.description,
+    });
+  }
+
   deleteStatus(id: string): Promise<void> {
     return this.statusesCollection.doc(id).delete();
   }

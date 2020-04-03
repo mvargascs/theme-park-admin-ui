@@ -19,12 +19,12 @@ import { Status } from '@shared/models/status';
 export class AttractionFormComponent implements OnInit {
   @Input() id: string;
 
-  private formTitles = ['Create Attraction', 'Update Attraction'];
+  private operations = ['Create', 'Update'];
 
   attractionForm: FormGroup;
   locations$: Observable<Location[]>;
   statuses$: Observable<Status[]>;
-  currentTitle: string;
+  currentOperation: string;
 
   formPopulated = false;
 
@@ -37,7 +37,7 @@ export class AttractionFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.currentTitle = this.setTitle();
+    this.currentOperation = this.getOperation();
 
     this.locations$ = this.locationService.getLocations();
     this.statuses$ = this.statusService.getStatuses();
@@ -98,8 +98,8 @@ export class AttractionFormComponent implements OnInit {
       });
   }
 
-  private setTitle(): string {
-    return this.id ? this.formTitles[1] : this.formTitles[0];
+  private getOperation(): string {
+    return this.id ? this.operations[1] : this.operations[0];
   }
 
   private setForm(): Promise<void> {

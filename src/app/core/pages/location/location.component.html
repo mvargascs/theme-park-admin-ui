@@ -1,0 +1,6 @@
+<div *ngIf="locationId; else createForm">
+  <app-location-form [id]="locationId"></app-location-form>
+</div>
+<ng-template #createForm>
+  <app-location-form></app-location-form>
+</ng-template>

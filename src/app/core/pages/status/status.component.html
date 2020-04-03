@@ -1,0 +1,6 @@
+<div *ngIf="statusId; else createForm">
+  <app-status-form [id]="statusId"></app-status-form>
+</div>
+<ng-template #createForm>
+  <app-status-form></app-status-form>
+</ng-template>

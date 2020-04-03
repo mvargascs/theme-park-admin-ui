@@ -25,6 +25,17 @@ export class LocationService {
     return this.locationsCollection.valueChanges({idField: 'id'});
   }
 
+  getLocation(id: string): Promise<any> {
+    return this.afs.firestore.collection(`users/${this.afAuth.auth.currentUser.uid}/locations`).doc(id).get();
+  }
+
+  updateLocation(location: Location) {
+    return this.locationsCollection.doc(location.id).update({
+      name: location.name,
+      openingDate: location.openingDate,
+    });
+  }
+
   deleteLocation(id: string): Promise<void> {
     return this.locationsCollection.doc(id).delete();
   }

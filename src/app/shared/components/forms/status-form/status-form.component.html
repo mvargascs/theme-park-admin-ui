@@ -1,10 +1,10 @@
 <div fxLayout="column" fxLayoutGap="1rem">
   <mat-card>
     <mat-card-title>
-      Create Status
+      {{currentOperation}} Status
     </mat-card-title>
-    <mat-card-content>
-      <form [formGroup]="statusForm" (ngSubmit)="createStatus()" fxLayout="column">
+    <mat-card-content *ngIf="formPopulated">
+      <form [formGroup]="statusForm" (ngSubmit)="submitStatus()" fxLayout="column">
 
         <mat-form-field appearance="outline">
           <mat-label>Status Name</mat-label>
@@ -17,8 +17,8 @@
         </mat-form-field>
 
         <div fxLayout="row" fxLayoutAlign="space-between">
-          <button mat-raised-button type="button" color="accent" routerLink="/dashboard">Cancle</button>
-          <button mat-raised-button type="submit" color="primary" [disabled]="statusForm.invalid">Create</button>
+          <button mat-raised-button type="button" color="accent" (click)="cancel()">Cancle</button>
+          <button mat-raised-button type="submit" color="primary" [disabled]="statusForm.invalid">{{currentOperation}}</button>
         </div>
 
       </form>

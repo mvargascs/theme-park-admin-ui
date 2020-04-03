@@ -1,7 +1,7 @@
 <div fxLayout="column" fxLayoutGap="1rem">
   <mat-card>
     <mat-card-title>
-      {{currentTitle}}
+      {{currentOperation}} Attraction
     </mat-card-title>
     <mat-card-content *ngIf="formPopulated">
       <form [formGroup]="attractionForm" (ngSubmit)="submitAttraction()" fxLayout="column">
@@ -35,7 +35,8 @@
         </mat-form-field>
 
         <mat-label *ngIf="id">Wait Time</mat-label>
-        <mat-slider *ngIf="id" class="mat-form-field-wrapper" formControlName="waittime" color="primary" max="180" min="0" step="5" thumbLabel="true" tickInterval="1">
+        <mat-slider *ngIf="id" class="mat-form-field-wrapper" formControlName="waittime" color="primary" max="180"
+          min="0" step="5" thumbLabel="true" tickInterval="1">
         </mat-slider>
 
         <mat-label>Is QuickLane available at this attraction?</mat-label>
@@ -45,7 +46,7 @@
 
         <div fxLayout="row" fxLayoutAlign="space-between">
           <button mat-raised-button type="button" color="accent" (click)="cancel()">Cancle</button>
-          <button mat-raised-button type="submit" color="primary" [disabled]="attractionForm.invalid">Create</button>
+          <button mat-raised-button type="submit" color="primary" [disabled]="attractionForm.invalid">{{currentOperation}}</button>
         </div>
 
       </form>

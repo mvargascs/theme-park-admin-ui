@@ -30,10 +30,10 @@
           <mat-cell *cdkCellDef="let row">
             <mat-menu #appMenu="matMenu">
               <ng-template matMenuContent>
-                <!-- <button mat-menu-item (click)="updateStatus(row)">
-                      <mat-icon>edit</mat-icon>
-                      Update
-                    </button> -->
+                <button mat-menu-item (click)="updateStatus(row)">
+                  <mat-icon>edit</mat-icon>
+                  Update
+                </button>
                 <button mat-menu-item (click)="deleteStatus(row)">
                   <mat-icon>delete</mat-icon>
                   Delete

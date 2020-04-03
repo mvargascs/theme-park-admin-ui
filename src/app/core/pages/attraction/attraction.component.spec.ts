@@ -12,7 +12,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSliderModule } from '@angular/material/slider';
 
-import { AttractionFormComponent } from '@shared/components/attraction-form/attraction-form.component';
+import { AttractionFormComponent } from '@shared/components/forms/attraction-form/attraction-form.component';
 
 import { AttractionsService } from '@shared/services/attractions.service';
 import { LocationService } from '@shared/services/location.service';

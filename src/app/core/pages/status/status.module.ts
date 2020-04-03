@@ -4,18 +4,19 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@shared/modules/material.module';
 import { SharedModule } from '@shared/modules/shared.module';
 
-import { CreateStatusRoutingModule } from './create-status-routing.module';
-import { CreateStatusComponent } from './create-status.component';
+import { StatusRoutingModule } from './status-routing.module';
+import { StatusComponent } from './status.component';
 
 @NgModule({
   declarations: [
-    CreateStatusComponent
+    StatusComponent
   ],
   imports: [
     CommonModule,
-    CreateStatusRoutingModule,
+    StatusRoutingModule,
     MaterialModule,
     SharedModule,
   ]
 })
-export class CreateStatusModule { }
+export class StatusModule { }
+

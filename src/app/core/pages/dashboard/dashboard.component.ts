@@ -30,7 +30,7 @@ export class DashboardComponent implements OnInit {
     {
       title: 'Create Location Form',
       description: 'Create a location through a validated form.',
-      url: '/create-location'
+      url: '/location'
     },
   ];
 
@@ -43,7 +43,7 @@ export class DashboardComponent implements OnInit {
     {
       title: 'Create Status Form',
       description: 'Create a status through a validated form.',
-      url: '/create-status'
+      url: '/status'
     },
   ];
 

@@ -5,7 +5,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { MaterialModule } from '@shared/modules/material.module';
 
-import { AttractionFormComponent } from '@shared/components/attraction-form/attraction-form.component';
+import { AttractionFormComponent } from '@shared/components/forms/attraction-form/attraction-form.component';
+import { LocationFormComponent } from '@shared/components/forms/location-form/location-form.component';
+import { StatusFormComponent } from '@shared/components/forms/status-form/status-form.component';
 
 import { BooleanToStringPipe } from '@shared/pipe/boolean-to-string.pipe';
 import { TimestampToDatePipe } from '@shared/pipe/timestamp-to-date.pipe';
@@ -13,6 +15,8 @@ import { TimestampToDatePipe } from '@shared/pipe/timestamp-to-date.pipe';
 @NgModule({
   declarations: [
     AttractionFormComponent,
+    LocationFormComponent,
+    StatusFormComponent,
     BooleanToStringPipe,
     TimestampToDatePipe,
   ],
@@ -26,6 +30,8 @@ import { TimestampToDatePipe } from '@shared/pipe/timestamp-to-date.pipe';
     FlexLayoutModule,
     ReactiveFormsModule,
     AttractionFormComponent,
+    LocationFormComponent,
+    StatusFormComponent,
     BooleanToStringPipe,
     TimestampToDatePipe,
   ]

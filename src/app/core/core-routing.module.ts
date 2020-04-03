@@ -33,23 +33,23 @@ const routes: Routes = [
     canLoad: [AuthGuard]
   },
   {
+    path: 'location',
+    loadChildren: () => import('./pages/location/location.module').then(m => m.LocationModule),
+    canLoad: [AuthGuard]
+  },
+  {
     path: 'locations',
     loadChildren: () => import('./pages/locations/locations.module').then(m => m.LocationsModule),
     canLoad: [AuthGuard]
   },
   {
-    path: 'create-location',
-    loadChildren: () => import('./pages/create-location/create-location.module').then(m => m.CreateLocationModule),
+    path: 'status',
+    loadChildren: () => import('./pages/status/status.module').then(m => m.StatusModule),
     canLoad: [AuthGuard]
   },
   {
     path: 'statuses',
     loadChildren: () => import('./pages/statuses/statuses.module').then(m => m.StatusesModule),
-    canLoad: [AuthGuard]
-  },
-  {
-    path: 'create-status',
-    loadChildren: () => import('./pages/create-status/create-status.module').then(m => m.CreateStatusModule),
     canLoad: [AuthGuard]
   },
   {

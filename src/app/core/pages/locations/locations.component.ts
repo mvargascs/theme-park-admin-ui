@@ -1,7 +1,9 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Subscription } from 'rxjs';
 
 import { Location } from '@shared/models/location';
 import { LocationService } from '@shared/services/location.service';
@@ -19,7 +21,8 @@ export class LocationsComponent implements OnInit, OnDestroy {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   constructor(
-    private locationService: LocationService
+    private locationService: LocationService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -35,6 +38,10 @@ export class LocationsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subs.unsubscribe();
+  }
+
+  updateLocation(location: Location) {
+    this.router.navigate(['/', 'location', location.id]);
   }
 
   deleteLocation(location: Location) {
