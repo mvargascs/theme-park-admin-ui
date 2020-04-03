@@ -4,6 +4,8 @@ import { Status } from '@shared/models/status';
 
 import { statuses } from '@testing/data/statuses';
 
+import { StatusDocument } from '@testing/data/firebase-docs/status-doc';
+
 export class MockStatusService {
     createStatus(status: Status): Promise<any> {
         return null;
@@ -14,6 +16,14 @@ export class MockStatusService {
     getStatuses(): Observable<Status[]> {
         return of(statuses);
         // return this.statusesCollection.valueChanges({ idField: 'id' });
+    }
+
+    getStatus(id: string): Promise<any> {
+        return Promise.resolve(new StatusDocument());
+    }
+
+    updateStatus(status: Status) {
+        return Promise.resolve();
     }
 
     deleteStatus(id: string): Promise<void> {

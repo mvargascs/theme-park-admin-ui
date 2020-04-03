@@ -1,4 +1,4 @@
-import { attractions } from './attractions';
+import { attractions } from '../attractions';
 
 export class AttractionDocument {
 

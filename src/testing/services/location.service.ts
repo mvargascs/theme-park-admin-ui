@@ -4,6 +4,8 @@ import { Location } from '@shared/models/location';
 
 import { locations } from '@testing/data/locations';
 
+import { LocationDocument } from '@testing/data/firebase-docs/location-doc';
+
 export class MockLocationService {
     createLocation(location: Location): Promise<any> {
         return null;
@@ -14,6 +16,14 @@ export class MockLocationService {
     getLocations(): Observable<Location[]> {
         return of(locations);
         // return this.locationsCollection.valueChanges({ idField: 'id' });
+    }
+
+    getLocation(id: string): Promise<any> {
+        return Promise.resolve(new LocationDocument());
+    }
+
+    updateLocation(status: Location) {
+        return Promise.resolve();
     }
 
     deleteLocation(id: string): Promise<void> {

@@ -3,7 +3,8 @@ import { Observable, of } from 'rxjs';
 import { Attraction } from '@shared/models/attraction';
 
 import { attractions } from '@testing/data/attractions';
-import { AttractionDocument } from '@testing/data/attraction-doc';
+
+import { AttractionDocument } from '@testing/data/firebase-docs/attraction-doc';
 
 export class MockAttractionsService {
     createAttraction(attraction: Attraction): Promise<any> {
