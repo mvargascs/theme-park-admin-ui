@@ -18,10 +18,12 @@ export class LocationFormComponent implements OnInit {
   @Input() id: string;
 
   private operations = ['Create', 'Update'];
+  private cancelUrls = ['dashboard', 'locations'];
 
   locationForm: FormGroup;
   locations$: Observable<Location[]>;
   currentOperation: string;
+  cancelUrl: string;
 
   formPopulated = false;
 
@@ -33,6 +35,7 @@ export class LocationFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentOperation = this.getOperation();
+    this.cancelUrl = this.getCancelUrl();
 
     this.locations$ = this.locationService.getLocations();
 
@@ -86,6 +89,10 @@ export class LocationFormComponent implements OnInit {
 
   private getOperation(): string {
     return this.id ? this.operations[1] : this.operations[0];
+  }
+
+  private getCancelUrl(): string {
+    return this.id ? this.cancelUrls[1] : this.cancelUrls[0];
   }
 
   private setForm(): Promise<void> {

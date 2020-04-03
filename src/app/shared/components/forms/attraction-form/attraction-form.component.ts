@@ -20,11 +20,13 @@ export class AttractionFormComponent implements OnInit {
   @Input() id: string;
 
   private operations = ['Create', 'Update'];
+  private cancelUrls = ['dashboard', 'attractions'];
 
   attractionForm: FormGroup;
   locations$: Observable<Location[]>;
   statuses$: Observable<Status[]>;
   currentOperation: string;
+  cancelUrl: string;
 
   formPopulated = false;
 
@@ -38,6 +40,7 @@ export class AttractionFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentOperation = this.getOperation();
+    this.cancelUrl = this.getCancelUrl();
 
     this.locations$ = this.locationService.getLocations();
     this.statuses$ = this.statusService.getStatuses();
@@ -100,6 +103,10 @@ export class AttractionFormComponent implements OnInit {
 
   private getOperation(): string {
     return this.id ? this.operations[1] : this.operations[0];
+  }
+
+  private getCancelUrl(): string {
+    return this.id ? this.cancelUrls[1] : this.cancelUrls[0];
   }
 
   private setForm(): Promise<void> {

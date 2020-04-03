@@ -17,7 +17,7 @@
         </mat-form-field>
 
         <div fxLayout="row" fxLayoutAlign="space-between">
-          <button mat-raised-button type="button" color="accent" (click)="cancel()">Cancle</button>
+          <a mat-raised-button color="accent" routerLink="/{{cancelUrl}}">Cancle</a>
           <button mat-raised-button type="submit" color="primary" [disabled]="statusForm.invalid">{{currentOperation}}</button>
         </div>
 

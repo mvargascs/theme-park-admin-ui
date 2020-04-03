@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { MaterialModule } from '@shared/modules/material.module';
 
@@ -25,6 +26,7 @@ import { TimestampToDatePipe } from '@shared/pipe/timestamp-to-date.pipe';
     FlexLayoutModule,
     MaterialModule,
     ReactiveFormsModule,
+    RouterModule,
   ],
   exports: [
     FlexLayoutModule,
