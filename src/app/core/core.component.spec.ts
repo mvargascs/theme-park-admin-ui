@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 import { AuthService } from '@shared/services/auth.service';
 
 import { MockAuthService } from '@testing/services/auth.service';
@@ -13,10 +16,14 @@ describe('CoreComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      declarations: [
+        CoreComponent
+      ],
       imports: [
+        MatButtonModule,
+        MatToolbarModule,
         RouterTestingModule
       ],
-      declarations: [ CoreComponent ],
       providers: [
         { provide: AuthService, useClass: MockAuthService },
       ]
