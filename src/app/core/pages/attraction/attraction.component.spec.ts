@@ -1,7 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ActivatedRoute, convertToParamMap, Router } from '@angular/router';
+import { async, ComponentFixture, TestBed, TestModuleMetadata } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { ActivatedRoute } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { of } from 'rxjs';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -22,51 +22,85 @@ import { MockAttractionsService } from '@testing/services/attraction.service';
 import { MockLocationService } from '@testing/services/location.service';
 import { MockStatusService } from '@testing/services/status.service';
 
-import { mockRouter } from '@testing/data/router';
+import { routeStubWithoutIdParam, routeStubWithIdParam } from '@testing/stubs/params';
 
 import { AttractionComponent } from './attraction.component';
-
-const routeStub = { paramMap: of(convertToParamMap({ id: 'test' })) };
 
 describe('AttractionComponent', () => {
   let component: AttractionComponent;
   let fixture: ComponentFixture<AttractionComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [
-        AttractionComponent,
-        AttractionFormComponent,
-      ],
-      imports: [
-        MatButtonModule,
-        MatCardModule,
-        MatDatepickerModule,
-        MatInputModule,
-        MatMenuModule,
-        MatNativeDateModule,
-        MatSelectModule,
-        MatSliderModule,
-        ReactiveFormsModule
-      ],
-      providers: [
-        { provide: ActivatedRoute, useValue: routeStub },
-        { provide: AttractionsService, useClass: MockAttractionsService },
-        { provide: LocationService, useClass: MockLocationService },
-        { provide: StatusService, useClass: MockStatusService },
-        { provide: Router, useValue: mockRouter }
-      ]
-    })
-    .compileComponents();
-  }));
+  const moduleDef: TestModuleMetadata = {
+    declarations: [
+      AttractionComponent,
+      AttractionFormComponent,
+    ],
+    imports: [
+      MatButtonModule,
+      MatCardModule,
+      MatDatepickerModule,
+      MatInputModule,
+      MatMenuModule,
+      MatNativeDateModule,
+      MatSelectModule,
+      MatSliderModule,
+      ReactiveFormsModule,
+      RouterTestingModule
+    ],
+    providers: [
+      { provide: AttractionsService, useClass: MockAttractionsService },
+      { provide: LocationService, useClass: MockLocationService },
+      { provide: StatusService, useClass: MockStatusService },
+    ]
+  };
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(AttractionComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  describe('When an Id is NOT provided in the url param', () => {
+    beforeEach(async(() => {
+      moduleDef.providers.push(
+        { provide: ActivatedRoute, useValue: routeStubWithoutIdParam },
+      );
+
+      TestBed.configureTestingModule(moduleDef)
+        .compileComponents();
+    }));
+
+    beforeEach(() => {
+      fixture = TestBed.createComponent(AttractionComponent);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+    });
+
+    it('should create without id param', () => {
+      expect(component).toBeTruthy();
+    });
+
+    // it('should have an attraction form component', () => {
+    //   expect(component).toBeTruthy();
+    // });
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  describe('When an ID is provided in the url param', () => {
+    beforeEach(async(() => {
+      moduleDef.providers.push(
+        { provide: ActivatedRoute, useValue: routeStubWithIdParam },
+      );
+      
+      TestBed.configureTestingModule(moduleDef)
+        .compileComponents();
+    }));
+
+    beforeEach(() => {
+      fixture = TestBed.createComponent(AttractionComponent);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+    });
+
+    it('should create with id param', () => {
+      expect(component).toBeTruthy();
+    });
+
+    it('attraction id should equal id param', () => {
+      expect(component.attractionId).toEqual('test');
+    });
   });
 });

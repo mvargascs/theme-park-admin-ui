@@ -26,5 +26,4 @@ export class AttractionComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subs.unsubscribe();
   }
-
 }
