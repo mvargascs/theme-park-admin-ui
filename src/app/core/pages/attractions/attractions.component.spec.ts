@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Router } from '@angular/router';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CdkTableModule } from '@angular/cdk/table';
@@ -16,7 +15,6 @@ import { AttractionsService } from '@shared/services/attractions.service';
 import { MockAttractionsService } from '@testing/services/attraction.service';
 
 import { attractions } from '@testing/data/attractions';
-import { mockRouter } from '@testing/data/router';
 
 import { AttractionsComponent } from './attractions.component';
 
@@ -34,7 +32,9 @@ describe('AttractionsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AttractionsComponent ],
+      declarations: [
+        AttractionsComponent
+      ],
       imports: [
         CdkTableModule,
         MatButtonModule,
@@ -48,7 +48,6 @@ describe('AttractionsComponent', () => {
       ],
       providers: [
         { provide: AttractionsService, useClass: MockAttractionsService },
-        { provide: Router, useValue: mockRouter }
       ]
     })
     .compileComponents();

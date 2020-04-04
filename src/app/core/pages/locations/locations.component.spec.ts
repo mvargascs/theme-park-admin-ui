@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Router } from '@angular/router';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CdkTableModule } from '@angular/cdk/table';
@@ -16,8 +15,6 @@ import { LocationService } from '@shared/services/location.service';
 import { TimestampToDatePipe } from '@shared/pipe/timestamp-to-date.pipe';
 
 import { MockLocationService } from '@testing/services/location.service';
-
-import { mockRouter } from '@testing/data/router';
 
 import { LocationsComponent } from './locations.component';
 
@@ -44,7 +41,6 @@ describe('LocationsComponent', () => {
       ],
       providers: [
         { provide: LocationService, useClass: MockLocationService },
-        { provide: Router, useValue: mockRouter }
       ]
     })
     .compileComponents();

@@ -58,10 +58,10 @@
           <mat-cell *cdkCellDef="let row">
             <mat-menu #appMenu="matMenu">
               <ng-template matMenuContent>
-                <button mat-menu-item (click)="updateAttraction(row)">
+                <a mat-menu-item [routerLink]="['/attraction', row.id]">
                   <mat-icon>edit</mat-icon>
                   Update
-                </button>
+                </a>
                 <button mat-menu-item (click)="deleteAttraction(row)">
                   <mat-icon>delete</mat-icon>
                   Delete
