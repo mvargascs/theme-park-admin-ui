@@ -28,6 +28,7 @@ import { AttractionComponent } from './attraction.component';
 
 describe('AttractionComponent', () => {
   let component: AttractionComponent;
+  let element: HTMLElement;
   let fixture: ComponentFixture<AttractionComponent>;
 
   const moduleDef: TestModuleMetadata = {
@@ -67,6 +68,7 @@ describe('AttractionComponent', () => {
     beforeEach(() => {
       fixture = TestBed.createComponent(AttractionComponent);
       component = fixture.componentInstance;
+      element = fixture.nativeElement;
       fixture.detectChanges();
     });
 
@@ -74,12 +76,19 @@ describe('AttractionComponent', () => {
       expect(component).toBeTruthy();
     });
 
-    // it('should have an attraction form component', () => {
-    //   expect(component).toBeTruthy();
-    // });
+    it('attraction id should be null', () => {
+      expect(component.attractionId).toBe(null);
+    });
+
+    describe('HTML Template', () => {
+      it('should have an attraction form component', () => {
+        const el = element.querySelector('app-attraction-form');
+        expect(el).not.toBe(null);
+      });
+    });
   });
 
-  describe('When an ID is provided in the url param', () => {
+  describe('When an Id is provided in the url param', () => {
     beforeEach(async(() => {
       moduleDef.providers.push(
         { provide: ActivatedRoute, useValue: routeStubWithIdParam },
@@ -92,6 +101,7 @@ describe('AttractionComponent', () => {
     beforeEach(() => {
       fixture = TestBed.createComponent(AttractionComponent);
       component = fixture.componentInstance;
+      element = fixture.nativeElement;
       fixture.detectChanges();
     });
 
@@ -100,7 +110,20 @@ describe('AttractionComponent', () => {
     });
 
     it('attraction id should equal id param', () => {
-      expect(component.attractionId).toEqual('test');
+      expect(component.attractionId).toBe('test');
+    });
+
+    describe('HTML Template', () => {
+      it('should have an attraction form component', () => {
+        const el = element.querySelector('app-attraction-form');
+        expect(el).not.toBe(null);
+      });
+  
+      it('should pass id attraction form component', () => {
+        const el = element.querySelector('app-attraction-form');
+        const elementIdAttribute = el.attributes.getNamedItem('ng-reflect-id').value;
+        expect(elementIdAttribute).toBe('test');
+      });
     });
   });
 });
