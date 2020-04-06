@@ -1,13 +1,13 @@
 <div fxLayout="column" fxLayoutGap="1rem">
-  <mat-card>
+  <mat-card id="searchCard">
     <mat-card-content>
       <mat-form-field fxLayout="column">
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search Attractions">
       </mat-form-field>
     </mat-card-content>
   </mat-card>
 
-  <mat-card>
+  <mat-card id="attractionsTable">
     <mat-card-content>
       <mat-table [dataSource]="dataSource" matSort>
         <!-- Name Definition -->

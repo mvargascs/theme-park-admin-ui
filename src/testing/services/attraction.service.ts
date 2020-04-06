@@ -34,11 +34,12 @@ export class MockAttractionsService {
     }
 
     deleteAttraction(id: string): Promise<void> {
-        return null;
+        return Promise.resolve();
         // return this.attractionsCollection.doc(id).delete();
     }
 
     addDefaultAttractions() {
+        return;
         // this.getDefaultAttractions().then((res: QuerySnapshot<any>) => {
         //     res.forEach(doc => {
         //         // Cast the data of each doc returned to an attraction, add that attraction to the user's attraction collection
