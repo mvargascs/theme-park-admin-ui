@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed, TestModuleMetadata } from '@angular/c
 import { HarnessLoader } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { MatButtonHarness } from '@angular/material/button/testing';
+import { MatInputHarness } from '@angular/material/input/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CdkTableModule } from '@angular/cdk/table';
@@ -106,7 +107,7 @@ describe('AttractionsComponent', () => {
   });
 
   describe('HTML Template', () => {
-    it('should have a search card', async () => {
+    it('should have a search card', () => {
       const el = element.querySelector('#searchCard');
       expect(el).not.toBe(null);
     });
