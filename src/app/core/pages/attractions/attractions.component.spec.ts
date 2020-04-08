@@ -118,6 +118,15 @@ describe('AttractionsComponent', () => {
     });
 
     describe('Search Card', () => {
+      let input: MatInputHarness;
+
+      beforeEach(async(async () => {
+        input = await loader.getHarness(MatInputHarness.with({placeholder: 'Search Attractions'}));
+      }));
+
+      it('should have a search input', () => {
+        expect(input).not.toBe(null);
+      });
     });
 
     describe('Attractions Table Card', () => {
